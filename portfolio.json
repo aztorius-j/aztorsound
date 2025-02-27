@@ -1,0 +1,73 @@
+[
+    {
+        "category": "Music Production",
+        "videos": [
+            {
+                "title": "NEFKUS Creative House",
+                "source": "video/nefkus-creative-house.mp4",
+                "poster": "img/nefkus-thumbnail.webp",
+                "youtube": "https://www.youtube.com/watch?v=lRWuHWE9k-M"
+            },
+            {
+                "title": "CHATEAU Ruban",
+                "source": "video/chateau-ruban.mp4",
+                "poster": "img/ruban-thumbnail.webp",
+                "youtube": "https://www.youtube.com/watch?v=-88UwBytpbM"
+            },
+            {
+                "title": "NESEDA",
+                "source": "video/neseda.mp4",
+                "poster": "img/neseda-thumbnail.webp",
+                "youtube": "https://www.youtube.com/watch?v=vJd3huvXQeY"
+            }
+        ]
+    },
+
+    {
+        "category": "Sound Design",
+        "videos": [
+            {
+                "title": "CUBE to CUBE",
+                "source": "video/cube-to-cube.mp4",
+                "poster": "img/cube-thumbnail.webp",
+                "youtube": "https://www.youtube.com/watch?v=4cdCT4kCVdY"
+            },
+            {
+                "title": "DEECK Frens",
+                "source": "video/deeck-frens.mp4",
+                "poster": "img/deeck-frens-thumbnail.webp",
+                "youtube": "https://www.youtube.com/watch?v=-KYRjsysa18"
+            },
+            {
+                "title": "LAMITEC",
+                "source": "video/lamitec.mp4",
+                "poster": "img/lamitec-thumbnail.webp",
+                "youtube": "https://www.youtube.com/watch?v=EhXFw-NpIjw"
+            }
+        ]
+    },
+
+    {
+        "category": "Audio Engineering",
+        "videos": [
+            {
+                "title": "TRIPLE Jump",
+                "source": "video/triple-jump.mp4",
+                "poster": "img/triple-jump-thumbnail.webp",
+                "youtube": "https://www.youtube.com/watch?v=XdYq01fGyi8"
+            },
+            {
+                "title": "YCHABODS",
+                "source": "video/ychabods.mp4",
+                "poster": "img/ychabods-thumbnail.webp",
+                "youtube": "https://www.youtube.com/watch?v=s_TC2IadieI"
+            },
+            {
+                "title": "STOLEN Street",
+                "source": "video/stolen-street.mp4",
+                "poster": "img/stolen-street-thumbnail.webp",
+                "youtube": "https://www.youtube.com/watch?v=sMguCyPY100"
+            }
+        ]
+    }
+]
