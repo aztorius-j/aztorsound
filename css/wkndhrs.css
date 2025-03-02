@@ -14,7 +14,36 @@
 .line {
     font-family: 'NeueHaasDisplayMedium';
     letter-spacing: 0.02em;
+    position: relative;
+    transform: translateY(0);
+    transition: transform 1s ease;
 }
+
+.line::before {
+    content: "";
+    background-color: black;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: scaleY(var(--scale-value, var(--initial-scale, 1)));
+    transform-origin: bottom;
+    transition: transform 1s ease;
+}
+
+.small-text .line:nth-child(1)  { --initial-scale: 1; }
+.small-text .line:nth-child(2)  { --initial-scale: 1.18; }
+.small-text .line:nth-child(3)  { --initial-scale: 1.37; }
+.small-text .line:nth-child(4)  { --initial-scale: 1.58; }
+.small-text .line:nth-child(5)  { --initial-scale: 1.81; }
+.small-text .line:nth-child(6)  { --initial-scale: 2.05; }
+.small-text .line:nth-child(7)  { --initial-scale: 2.31; }
+.small-text .line:nth-child(8)  { --initial-scale: 2.58; }
+.small-text .line:nth-child(9)  { --initial-scale: 2.77; }
+.small-text .line:nth-child(10) { --initial-scale: 2.85; }
+.small-text .line:nth-child(11) { --initial-scale: 2.93; }
+.small-text .line:nth-child(12) { --initial-scale: 3; }
 
 .service-item {
     font-family: 'NeueHaasDisplayBold';
