@@ -1,7 +1,7 @@
 #wkndhrs {
-    height: 150vh;
+    height: 100vh;
     display: flex;
-    align-items: flex-end;
+    align-items: flex-start;
     position: relative;
 }
 
@@ -9,7 +9,7 @@
     display: grid;
     grid-template-columns: 5fr 7fr;
     grid-auto-rows: auto;
-    padding: 0 1rem 16rem 1rem;
+    padding: 1rem;
 }
 
 .small-text {
