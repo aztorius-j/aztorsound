@@ -1,0 +1,20 @@
+#wkndhrs {
+    height: 100vh;
+}
+
+.wrapper {
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    padding: 5rem 1rem;
+}
+
+.line {
+    font-family: 'NeueHaasDisplayMedium';
+    letter-spacing: 0.02em;
+}
+
+.service-item {
+    font-family: 'NeueHaasDisplayBold';
+    font-size: 8rem;
+    line-height: 1em;
+}

@@ -16,6 +16,11 @@
     src: url(../fonts/NeueHaasDisplayMedium.woff2) format('woff2');
 }
 
+@font-face {
+    font-family: 'NeueHaasDisplayBold';
+    src: url(../fonts/NeueHaasDisplayBold.woff2) format('woff2');
+}
+
 *, *::before, *::after {
     box-sizing: border-box;
 }

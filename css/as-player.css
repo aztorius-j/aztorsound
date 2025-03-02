@@ -77,7 +77,7 @@ video {
     padding-left: 4%;
 }
 
-h1 {
+#as-player h1 {
     font-weight: normal;
     font-size: var(--heading-size);
     line-height: calc(var(--heading-size) - 0.25rem);
@@ -100,7 +100,7 @@ h1 {
     margin-bottom: -0.5rem;
 }
 
-h2 {
+#as-player h2 {
     font-size: 1.375rem;
 }
 
