@@ -1,11 +1,14 @@
 #wkndhrs {
     height: 100vh;
+    border: 3px solid red;
+    display: flex;
+    align-items: center;
 }
 
 .wrapper {
     display: grid;
     grid-template-columns: 5fr 7fr;
-    padding: 5rem 1rem;
+    padding: 1rem;
 }
 
 .line {
