@@ -1,14 +1,19 @@
 #wkndhrs {
-    height: 100vh;
-    border: 3px solid red;
+    height: 150vh;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
+    position: relative;
 }
 
 .wrapper {
     display: grid;
     grid-template-columns: 5fr 7fr;
-    padding: 1rem;
+    grid-auto-rows: auto;
+    padding: 0 1rem 16rem 1rem;
+}
+
+.small-text {
+    align-self: start;
 }
 
 .line {
@@ -49,4 +54,6 @@
     font-family: 'NeueHaasDisplayBold';
     font-size: 8rem;
     line-height: 1em;
+    transform: translateX(0);
+    transition: transform 0.1s linear;
 }

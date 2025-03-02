@@ -25,12 +25,17 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     padding: 0;
     margin: 0;
     font-family: 'NeueHaasDisplayLight';
     color: var(--white-color);
     background-color: black;
+    overflow-x: clip;
 }
 
 a, p, h1, h2, button {
