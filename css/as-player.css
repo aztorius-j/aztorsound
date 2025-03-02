@@ -275,7 +275,7 @@ progress::-moz-progress-bar {
         height: 15rem;
     }
 
-    h1 {
+    #as-player h1 {
         display: block;
         font-size: clamp(2rem, 10vw, 3.5rem);
     }
