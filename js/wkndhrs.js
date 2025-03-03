@@ -3,8 +3,8 @@ const   wkndhrs = document.getElementById('wkndhrs'),
         lines = Array.from(document.querySelectorAll('.line')),
         serviceItems = Array.from(document.querySelectorAll('.service-item'));
 
-let     scrollPointOne = wkndhrs.previousElementSibling.offsetHeight,
-        scrollPointTwo = scrollPointOne + (smallText.clientHeight / 2),
+let     scrollPointOne = wkndhrs.previousElementSibling.offsetTop + wkndhrs.previousElementSibling.offsetHeight,
+        scrollPointTwo = scrollPointOne + smallText.offsetTop + smallText.clientHeight * 0.8,
         scrollPointThree = scrollPointOne + wkndhrs.clientHeight;
         animationTriggered = false;
 
