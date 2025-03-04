@@ -63,7 +63,7 @@
     transition: transform 0.1s linear;
 }
 
-.section-title {
+.section-title-container {
     width: 100%;
     height: 100%;
     padding: 5rem 0 5rem 20%;
