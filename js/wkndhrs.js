@@ -5,7 +5,7 @@ const   wkndhrs = document.getElementById('wkndhrs'),
 
 let     scrollPointOne = wkndhrs.previousElementSibling.offsetTop + wkndhrs.previousElementSibling.offsetHeight,
         scrollPointTwo = scrollPointOne + smallText.offsetTop + smallText.clientHeight * 0.8,
-        scrollPointThree = scrollPointOne + wkndhrs.clientHeight;
+        scrollPointThree = scrollPointOne + wkndhrs.clientHeight,
         animationTriggered = false;
 
 // SMALL TEXT INITIALIZATION
@@ -17,21 +17,25 @@ lines.forEach((line, index) => {
 // BIG TEXT INITIALIZATION
 let startingOffsets = [
     window.innerWidth / 4 + 50,
-    window.innerWidth / 4 + 200,
-    window.innerWidth / 4 + 350,
-    window.innerWidth / 4 + 500
+    window.innerWidth / 4 + 150,
+    window.innerWidth / 4 + 250,
+    window.innerWidth / 4 + 370
 ];
 
 let endingOffsets = [
-    scrollPointThree - 300,
-    scrollPointThree - 200, 
-    scrollPointThree - 100,  
-    scrollPointThree
+    scrollPointThree - 250,
+    scrollPointThree - 175,
+    scrollPointThree - 100,
+    scrollPointThree - 30
 ];
 
 serviceItems.forEach((item, index) => {
     item.style.transform = `translateX(${startingOffsets[index]}px)`;
 });
+
+const easeInOutQuad = (t) => {
+    return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+};
 
 // ANIMATIONS
 const triggerAnimation = () => {
@@ -52,7 +56,9 @@ const triggerAnimation = () => {
             let progress = (scrollBottom - scrollPointOne) / (endingOffsets[index] - scrollPointOne);
             progress = Math.min(progress, 1);
 
-            let currentOffset = startingOffsets[index] * (1 - progress);
+            let easedProgress = easeInOutQuad(progress);
+
+            let currentOffset = startingOffsets[index] * (1 - easedProgress);
             item.style.transform = `translateX(${currentOffset}px)`;
         }
     });
