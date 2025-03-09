@@ -45,9 +45,17 @@ const initializeServiceItems = () => {
     });
 };
 
+const initializeSmallText = () => {
+    lines.forEach((line, index) => {
+        const offset = (index ** 1.5) * 2;
+        line.style.transform = `translateY(${offset}px)`;
+    });
+};
+
 window.addEventListener("resize", updateScrollPoints);
 updateScrollPoints();
 initializeServiceItems();
+initializeSmallText();
 
 const triggerAnimation = () => {
     const scrollBottom = window.scrollY + window.innerHeight;
@@ -61,7 +69,7 @@ const triggerAnimation = () => {
                 line.style.transform = `translateY(0)`;
             }, i * 25);
         });
-    } else if (scrollBottom < scrollPointOne) {
+    } else if (scrollBottom < scrollPointOne && animationTriggered) {
         animationTriggered = false;
         
         lines.forEach((line, index) => {
