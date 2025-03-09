@@ -14,6 +14,7 @@ class SectionTitle extends HTMLElement {
                     grid-template-columns: 4.2rem auto;
                     width: 20rem;
                     height: 6rem;
+                    white-space: nowrap;
                 }
 
                 #title-border svg {
