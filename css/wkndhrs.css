@@ -61,6 +61,7 @@
     line-height: 1em;
     transform: translateX(0);
     transition: transform 0.1s linear;
+    will-change: transform;
 }
 
 .section-title-container {

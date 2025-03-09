@@ -53,7 +53,7 @@ button {
 
 
 .fake-section {
-    height: 100vh;
+    height: 101vh;
     background-color: black;
     display: flex;
     justify-content: center;
