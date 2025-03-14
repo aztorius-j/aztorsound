@@ -1,11 +1,5 @@
 #as-player {
     height: 600vh;
-    background-color: black;
-}
-
-.sticky-element {
-    position: sticky;
-    top: 0;
 }
 
 .video-wrapper {
