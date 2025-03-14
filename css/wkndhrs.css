@@ -64,9 +64,9 @@
     will-change: transform;
 }
 
-.section-title-container:first-of-type {
-    justify-content: flex-end;
-    padding: 5rem 20% 5rem 0;
+.section-title-container:nth-of-type(2) {
+    justify-content: flex-start;
+    padding: 5rem 0 5rem 20%;
 }
 
 
@@ -79,7 +79,7 @@
 
 /* GLOBAL 800px */
 @media screen and (max-width: 800px) {
-    .section-title-container:first-of-type {
+    .section-title-container:nth-of-type(2) {
         padding: 1rem 0 3rem 20%;
     }
 }
@@ -115,7 +115,7 @@
         font-size: 3rem;
     }
 
-    .section-title-container:first-of-type {
+    .section-title-container:nth-of-type(2) {
         padding: 4rem 0 3rem 20%;
     }
 }
@@ -130,7 +130,7 @@
         font-size: clamp(2.75rem, 14vw, 4rem);
     }
 
-    .section-title-container:first-of-type {
+    .section-title-container:nth-of-type(2) {
         padding: 1rem 0 3rem 1rem;
     }
 }

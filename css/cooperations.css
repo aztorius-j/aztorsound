@@ -2,7 +2,26 @@
     height: 600vh;
 }
 
-.section-title-container:nth-of-type(2) {
-    justify-content: flex-start;
-    padding: 5rem 0 5rem 20%;
+.section-title-container:first-of-type {
+    justify-content: flex-end;
+    padding: 5rem 20% 5rem 0;
+}
+
+.artists-wrapper {
+    width: 100%;
+    display: flex;
+    padding-bottom: 6rem;
+}
+
+.artist {
+    width: 25rem;
+    height: 25rem;
+    border: 3px solid white;
+    flex-shrink: 0;
+    margin: 0 3rem;
+
+    font-size: 10rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
