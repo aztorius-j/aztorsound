@@ -1,5 +1,5 @@
 #cooperations {
-    height: 600vh;
+    height: 734vh;
 }
 
 .section-title-container:first-of-type {
@@ -7,22 +7,29 @@
     padding: 5rem 20% 5rem 0;
 }
 
-.artists-wrapper {
-    width: 100%;
+.cooperations-wrapper {
     display: flex;
     padding-bottom: 6rem;
-    transform: translateX(50%);
+    transform: translateX(0);
+}
+
+.artists-container {
+    display: flex;
+    gap: 6rem;
 }
 
 .artist {
     width: 25rem;
     height: 25rem;
     border: 3px solid white;
-    flex-shrink: 0;
-    margin: 0 3rem;
-
     font-size: 10rem;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-shrink: 0;
+}
+
+.fake-element {
+    border: 3px solid red;
+    flex-shrink: 0;
 }
