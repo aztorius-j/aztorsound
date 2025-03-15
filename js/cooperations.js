@@ -28,10 +28,24 @@ const artistScroll = () => {
     let progressPercentage = Math.min(progress / totalProgress, 1);
     const translateX = -progressPercentage * totalProgress;
     cooperationsWrapper.style.transform = `translateX(${translateX}px)`;
+
+    const viewportCenter = window.innerWidth / 2;
+
+    document.querySelectorAll('.artist').forEach(artist => {
+        const artistRect = artist.getBoundingClientRect();
+        const artistCenter = artistRect.left + artistRect.width / 2;
+        const distanceFromCenter = Math.abs(viewportCenter - artistCenter);
+        const maxDistance = viewportCenter;
+        const scale = Math.max(0.8, 1 - (distanceFromCenter / maxDistance) * 0.2);
+        artist.style.transform = `scale(${scale})`;
+    });
 };
 
 window.addEventListener("scroll", artistScroll);
-window.addEventListener("resize", updateValues);
+window.addEventListener("resize", () => {
+    updateValues();
+    artistScroll();
+});
 
 updateValues();
 artistScroll();
