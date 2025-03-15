@@ -2,10 +2,6 @@
     --artist-width: 400px;
 }
 
-#cooperations {
-    height: 734vh;
-}
-
 .section-title-container:first-of-type {
     justify-content: flex-end;
     padding: 5rem 20% 5rem 0;

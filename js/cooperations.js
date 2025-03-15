@@ -1,10 +1,9 @@
-const   cooperationsSection = document.getElementById('cooperations'),   
-        cooperationsWrapper = document.querySelector('.cooperations-wrapper'),
-        artistContainer = document.querySelector('.artists-container'),
-        artistsArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+const cooperationsSection = document.getElementById('cooperations'),
+      cooperationsWrapper = document.querySelector('.cooperations-wrapper'),
+      artistContainer = document.querySelector('.artists-container'),
+      artistsArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 
-let     startingPoint,
-        totalProgress;
+let     startingPoint, totalProgress, sectionHeight;
 
 artistsArray.forEach((artist) => {
     let artistFrame = document.createElement('div');
@@ -14,18 +13,21 @@ artistsArray.forEach((artist) => {
 });
 
 const updateValues = () => {
+    const wrapperWidth = cooperationsWrapper.scrollWidth;
+    const viewportHeight = window.innerHeight;
+
     startingPoint = cooperationsSection.getBoundingClientRect().top + window.scrollY;
-    totalProgress = cooperationsWrapper.scrollWidth - window.innerWidth;
-    artistScroll();
+    totalProgress = wrapperWidth - window.innerWidth;
+
+    sectionHeight = viewportHeight + totalProgress;
+    cooperationsSection.style.height = `${sectionHeight}px`;
 };
 
 const artistScroll = () => {
-    if (window.scrollY >= startingPoint) {
-        let progress = window.scrollY - startingPoint;
-        let progressPercentage = Math.min(progress / totalProgress, 1);
-        const translateX = -progressPercentage * totalProgress;
-        cooperationsWrapper.style.transform = `translateX(${translateX}px)`;
-    }
+    let progress = Math.max(0, window.scrollY - startingPoint);
+    let progressPercentage = Math.min(progress / totalProgress, 1);
+    const translateX = -progressPercentage * totalProgress;
+    cooperationsWrapper.style.transform = `translateX(${translateX}px)`;
 
     requestAnimationFrame(artistScroll);
 };
