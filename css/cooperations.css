@@ -34,3 +34,48 @@
     border: 3px solid red;
     flex-shrink: 0;
 }
+
+
+/* MAX-HEIGHT MEDIA QUERIES */
+@media screen and (max-height: 680px) {
+    .section-title-container:first-of-type {
+        justify-content: flex-end;
+        padding: 1rem 10% 3rem 0;
+    }
+}
+
+@media screen and (max-height: 580px) {
+    :root {
+        --artist-width: 280px;
+    }
+
+    .artists-container {
+        gap: 3rem;
+    }
+}
+
+@media screen and (max-height: 460px) {
+    :root {
+        --artist-width: 180px;
+    }
+
+    .artists-container {
+        gap: 3rem;
+    }
+}
+
+/* PORTRAIT MEDIA QUERIES */
+@media screen and (max-width: 480px) and (orientation: portrait) {
+    .section-title-container:first-of-type {
+        justify-content: flex-start;
+        padding: 3rem 0 6rem 1rem;
+    }
+
+    :root {
+        --artist-width: 320px;
+    }
+
+    .artists-container {
+        gap: 4rem;
+    }
+}
