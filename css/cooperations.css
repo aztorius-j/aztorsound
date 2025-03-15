@@ -1,3 +1,7 @@
+:root {
+    --artist-width: 400px;
+}
+
 #cooperations {
     height: 734vh;
 }
@@ -19,8 +23,8 @@
 }
 
 .artist {
-    width: 25rem;
-    height: 25rem;
+    width: var(--artist-width);
+    height: var(--artist-width);
     border: 3px solid white;
     font-size: 10rem;
     display: flex;
@@ -30,6 +34,7 @@
 }
 
 .fake-element {
+    width: calc((100vw - var(--artist-width)) / 2);
     border: 3px solid red;
     flex-shrink: 0;
 }

@@ -1,11 +1,10 @@
 const   cooperationsSection = document.getElementById('cooperations'),   
         cooperationsWrapper = document.querySelector('.cooperations-wrapper'),
-        fakeElement = Array.from(document.querySelectorAll('.fake-element')),
         artistContainer = document.querySelector('.artists-container'),
         artistsArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 
 let     startingPoint,
-        totalProgress = cooperationsSection.clientHeight;
+        totalProgress;
 
 artistsArray.forEach((artist) => {
     let artistFrame = document.createElement('div');
@@ -16,20 +15,14 @@ artistsArray.forEach((artist) => {
 
 const updateValues = () => {
     startingPoint = cooperationsSection.getBoundingClientRect().top + window.scrollY;
-    const fakeOffset = (window.innerWidth - 400) / 2;
-
-fakeElement.forEach((element, index) => {
-        element.style.width = `${fakeOffset}px`;
-});
-
+    totalProgress = cooperationsWrapper.scrollWidth - window.innerWidth;
     artistScroll();
 };
 
 const artistScroll = () => {
     if (window.scrollY >= startingPoint) {
         let progress = window.scrollY - startingPoint;
-        let progressPercentage = Math.min(progress / totalProgress, 0.87);
-
+        let progressPercentage = Math.min(progress / totalProgress, 1);
         const translateX = -progressPercentage * totalProgress;
         cooperationsWrapper.style.transform = `translateX(${translateX}px)`;
     }
