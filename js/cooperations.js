@@ -1,5 +1,5 @@
-const   cooperationsWrapper = document.querySelector('.cooperations-wrapper'),
-        cooperationsSection = document.getElementById('cooperations');
+const   cooperationsSection = document.getElementById('cooperations'),   
+        cooperationsWrapper = document.querySelector('.cooperations-wrapper'),
         fakeElement = Array.from(document.querySelectorAll('.fake-element')),
         artistContainer = document.querySelector('.artists-container'),
         artistsArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
@@ -7,7 +7,7 @@ const   cooperationsWrapper = document.querySelector('.cooperations-wrapper'),
 let     startingPoint,
         totalProgress = cooperationsSection.clientHeight;
 
-artistsArray.forEach((artist, index) => {
+artistsArray.forEach((artist) => {
     let artistFrame = document.createElement('div');
     artistFrame.classList.add('artist');
     artistFrame.innerText = artist;
@@ -26,8 +26,6 @@ fakeElement.forEach((element, index) => {
 };
 
 const artistScroll = () => {
-    // const viewportBottom = window.scrollY + window.innerHeight;
-
     if (window.scrollY >= startingPoint) {
         let progress = window.scrollY - startingPoint;
         let progressPercentage = Math.min(progress / totalProgress, 0.87);
