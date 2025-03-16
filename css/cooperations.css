@@ -29,7 +29,7 @@
 
 .artist-description {
     position: absolute;
-    top: -50px;
+    top: -33px;
     opacity: 0;
 }
 
@@ -37,11 +37,12 @@
     color: var(--white-color);
     font-size: 2rem;
     line-height: 0.75em;
+    white-space: nowrap;
 }
 
 .artist small {
     color: var(--ivgi-red);
-    font-size: 1rem;
+    font-size: 1.2rem;
 }
 
 .fake-element {
@@ -68,7 +69,7 @@
     }
 
     .artist-description {
-        top: -42px;
+        top: -24px;
     }
 
     .artist-description h5 {
@@ -91,15 +92,16 @@
     }
 
     .artist-description {
-        top: -34px;
+        top: -33px;
     }
 
     .artist-description h5 {
-        font-size: 1.25rem;
-        line-height: 0.45em;
+        font-size: 1rem;
+        line-height: 0.9em;
     }
     
     .artist small {
+        display: block;
         font-size: 0.8rem;
     }
 }
@@ -117,5 +119,21 @@
 
     .artists-container {
         gap: 4rem;
+    }
+
+    .artist-description {
+        top: -46px;
+    }
+
+    .artist-description h5 {
+        color: var(--white-color);
+        font-size: 1.75rem;
+        line-height: 0.75em;
+    }
+    
+    .artist small {
+        color: var(--ivgi-red);
+        font-size: 1rem;
+        display: block;
     }
 }

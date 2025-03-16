@@ -22,7 +22,7 @@ artistsArray.forEach((artist) => {
 
     let artistDescription = document.createElement('div');
     artistDescription.classList.add('artist-description');
-    artistDescription.innerHTML = `<h5>${artist.name}</h5><small>${artist.type}</small>`;
+    artistDescription.innerHTML = `<h5>${artist.name} <small>/${artist.type}/</small></h5>`;
 
     artistFrame.appendChild(artistDescription);
     artistContainer.appendChild(artistFrame);
