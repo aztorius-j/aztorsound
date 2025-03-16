@@ -2,75 +2,30 @@ const cooperationsSection = document.getElementById('cooperations'),
       cooperationsWrapper = document.querySelector('.cooperations-wrapper'),
       artistContainer = document.querySelector('.artists-container');
 
-const artistsArray = [
-    {
-        name: 'NEFKUS',
-        type: 'Creative Agency',
-        poster: 'img/cooperations/nefkus.png'
-    },
-    {
-        name: 'CUBE to CUBE',
-        type: 'Creative Agency',
-        poster: 'img/cooperations/cube.png'
-    },
-    {
-        name: 'Anna Kvasnovska',
-        type: 'Voice Actress',
-        poster: 'img/cooperations/anna-kvasnovska.png'
-    },
-    {
-        name: 'Bystrik',
-        type: 'Singer, Band Leader',
-        poster: 'img/cooperations/bystrik.jpg'
-    },
-    {
-        name: 'Stolen Street',
-        type: 'Indie Band',
-        poster: 'img/cooperations/stolen-street.jpg'
-    },
-    {
-        name: 'Ivan Zadrabaj',
-        type: 'Majster Pajser',
-        poster: 'img/cooperations/ivan-zadrabaj.jpg'
-    },
-    {
-        name: 'Ychabods',
-        type: "Rock'n'roll Band",
-        poster: 'img/cooperations/ychabods.jpeg'
-    },
-    {
-        name: 'The Nosebleeds',
-        type: 'Garage Rock Band',
-        poster: 'img/cooperations/nosebleeds.jpeg'
-    },
-    {
-        name: 'Lukas Pista',
-        type: 'Singer, Actor',
-        poster: 'img/cooperations/lukas-pista.jpeg'
-    },
-    {
-        name: 'Triple Jump',
-        type: 'Jazz Band',
-        poster: 'img/cooperations/triple-jump.jpg'
-    },
-    {
-        name: 'Hurooonky',
-        type: 'Podcasters',
-        poster: 'img/cooperations/hurooonky.jpeg'
+import { artistsArray } from './artists.js';
+
+const shuffleArray = (array) => {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
     }
-];
+};
+
+shuffleArray(artistsArray);
 
 let startingPoint, totalProgress, sectionHeight;
 
 artistsArray.forEach((artist) => {
     let artistFrame = document.createElement('div');
     artistFrame.classList.add('artist');
-    artistFrame.style.background = `url(${artist.poster})50% 50% / contain no-repeat`;
-    artistContainer.appendChild(artistFrame);
+    artistFrame.style.background = `url(${artist.poster}) 50% 50% / contain no-repeat`;
+
     let artistDescription = document.createElement('div');
     artistDescription.classList.add('artist-description');
-    artistDescription.innerHTML = `<h5>${artist.name}</h5><h6>${artist.type}</h6>`;
+    artistDescription.innerHTML = `<h5>${artist.name}</h5><small>${artist.type}</small>`;
+
     artistFrame.appendChild(artistDescription);
+    artistContainer.appendChild(artistFrame);
 });
 
 const updateValues = () => {
@@ -85,14 +40,17 @@ const updateValues = () => {
 };
 
 const artistScroll = () => {
+    // WRAPPER MOVEMENT
     let progress = Math.max(0, window.scrollY - startingPoint);
     let progressPercentage = Math.min(progress / totalProgress, 1);
     const translateX = -progressPercentage * totalProgress;
     cooperationsWrapper.style.transform = `translateX(${translateX}px)`;
 
     const viewportCenter = window.innerWidth / 2;
+    const artistElements = Array.from(document.querySelectorAll('.artist'));
 
-    document.querySelectorAll('.artist').forEach(artist => {
+    // SCALE LOGIC
+    artistElements.forEach(artist => {
         const artistRect = artist.getBoundingClientRect();
         const artistCenter = artistRect.left + artistRect.width / 2;
         const distanceFromCenter = Math.abs(viewportCenter - artistCenter);
@@ -100,10 +58,10 @@ const artistScroll = () => {
         const scale = Math.max(0.8, 1 - (distanceFromCenter / maxDistance) * 0.2);
         artist.style.transform = `scale(${scale})`;
 
-        const artistDescription = artist.querySelector('.artist-description');
-        if (artistDescription) {
-            artistDescription.style.opacity = Math.max(0, 1 - (distanceFromCenter / (viewportCenter * 0.5)));
-        }
+        // OPACITY LOGIC
+        const opacity = Math.max(0, 1 - (distanceFromCenter / maxDistance));
+        const description = artist.querySelector('.artist-description');
+        description.style.opacity = opacity;
     });
 };
 

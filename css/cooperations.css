@@ -22,39 +22,25 @@
     width: var(--artist-width);
     height: var(--artist-width);
     border: 3px solid var(--white-color);
-    font-size: 10rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     flex-shrink: 0;
     transform: scale(1);
     position: relative;
 }
 
 .artist-description {
-    width: 12.5rem;
-    height: 4rem;
-    padding: 1rem;
-    background-color: rgb(20, 19, 19);
-    border: 2px solid var(--white-color);
     position: absolute;
-    bottom: -20px;
-    right: -20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.artist-description h5,
-.artist-description h6 {
-    color: var(--white-color);
+    top: -50px;
+    opacity: 0;
 }
 
 .artist-description h5 {
-    font-size: 1.375rem;
+    color: var(--white-color);
+    font-size: 2rem;
+    line-height: 0.75em;
 }
 
-.artist-description h6 {
+.artist small {
+    color: var(--ivgi-red);
     font-size: 1rem;
 }
 
@@ -68,7 +54,7 @@
 @media screen and (max-height: 680px) {
     .section-title-container:first-of-type {
         justify-content: flex-end;
-        padding: 1rem 10% 3rem 0;
+        padding: 1rem 20% 4rem 0;
     }
 }
 
@@ -80,6 +66,19 @@
     .artists-container {
         gap: 3rem;
     }
+
+    .artist-description {
+        top: -42px;
+    }
+
+    .artist-description h5 {
+        font-size: 1.5rem;
+        line-height: 0.7em;
+    }
+    
+    .artist small {
+        font-size: 1rem;
+    }
 }
 
 @media screen and (max-height: 460px) {
@@ -89,6 +88,19 @@
 
     .artists-container {
         gap: 3rem;
+    }
+
+    .artist-description {
+        top: -34px;
+    }
+
+    .artist-description h5 {
+        font-size: 1.25rem;
+        line-height: 0.45em;
+    }
+    
+    .artist small {
+        font-size: 0.8rem;
     }
 }
 
