@@ -30,7 +30,7 @@ const artistsArray = [
     },
     {
         name: 'Ivan Zadrabaj',
-        type: 'Pianist, Composer',
+        type: 'Majster Pajser',
         poster: 'img/cooperations/ivan-zadrabaj.jpg'
     },
     {
