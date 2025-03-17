@@ -26,7 +26,7 @@ export const artistsArray = [
     },
     {
         name: 'Ivan Zadrabaj',
-        type: 'majster pajser',
+        type: 'pianist, composer',
         poster: 'img/cooperations/ivan-zadrabaj.jpg'
     },
     {
