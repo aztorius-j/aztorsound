@@ -13,12 +13,14 @@ const updateBackgroundProgress = () => {
     const backgroundProgress = Math.max(0, window.scrollY - backgroundStart);
     const backgroundPercentage = Math.min(100, (backgroundProgress * 100) / backgroundTotal);
 
-    console.log(backgroundPercentage);
     aboutContainer.style.backgroundImage = `linear-gradient(to top, white ${backgroundPercentage}%, black ${backgroundPercentage}%)`;
 };
 
-window.addEventListener("resize", updateDimensions);
 window.addEventListener("scroll", updateBackgroundProgress);
+window.addEventListener("resize", () => {
+    updateDimensions();
+    updateBackgroundProgress();
+});
 
 updateDimensions();
 updateBackgroundProgress();
