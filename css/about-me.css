@@ -1,4 +1,30 @@
+#about {
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 4fr 8fr;
+    border: 2px solid red;
+}
+
 #about .section-title-container {
     justify-content: flex-start;
-    padding: 5rem 0 7rem 40%;
+    align-items: center;
+    padding: 0 0 0 38%;
+}
+
+.about-container {
+    display: grid;
+    grid-template-rows: 9fr 3fr;
+    align-items: center;
+    padding: 0 10%;
+}
+
+.about-big {
+    font-size: 3rem;
+    text-align: center;
+}
+
+.about-small {
+    text-align: center;
+    width: 20rem;
+    justify-self: end;
 }
