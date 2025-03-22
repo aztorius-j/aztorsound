@@ -62,17 +62,24 @@ button {
     display: flex;
 }
 
-
-.fake-section {
-    height: 101vh;
-    background-color: black;
+#landing-page {
+    height: 100vh;
+    background: url('../img/aztorsound-yellow.gif') 50% 50% / cover no-repeat;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
 }
+
 
 h3 {
     margin: 0;
     padding: 0;
-    font-size: 5rem;
+    font-size: clamp(1rem, 10vw, 5rem);
+}
+
+.fake-section {
+    height: 105vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
