@@ -2,7 +2,7 @@
     --artist-width: 400px;
 }
 
-.section-title-container:first-of-type {
+#cooperations .section-title-container {
     justify-content: flex-end;
     padding: 5rem 20% 7rem 0;
 }
@@ -53,7 +53,7 @@
 
 /* MAX-HEIGHT MEDIA QUERIES */
 @media screen and (max-height: 680px) {
-    .section-title-container:first-of-type {
+    #cooperations .section-title-container {
         justify-content: flex-end;
         padding: 1rem 20% 4rem 0;
     }
@@ -108,7 +108,7 @@
 
 /* PORTRAIT MEDIA QUERIES */
 @media screen and (max-width: 480px) and (orientation: portrait) {
-    .section-title-container:first-of-type {
+    #cooperations .section-title-container {
         justify-content: flex-start;
         padding: 3rem 0 6rem 1rem;
     }
