@@ -1,0 +1,49 @@
+#aztor {
+    height: 250vh;
+}
+
+#aztor .sticky-element {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('../img/DSC_9691.jpg') no-repeat center / cover;
+    background-attachment: fixed;
+}
+
+#light-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    background: radial-gradient(circle 200px at center, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 1) 100%);
+    z-index: 10;
+}
+
+#aztor h4 {
+    font-family: 'Alpino-Variable';
+    font-weight: 900;
+    font-size: 8rem;
+    color: var(--ivgi-red);
+    display: flex;
+    opacity: 0;
+    filter: blur(10px);
+    z-index: 1000;
+}
+
+.letter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1.75em;
+    height: 1.75em;
+    border: 0.05em solid var(--ivgi-red);
+    border-radius: 50%;
+}
+
+.letter:first-of-type {
+    background-color: var(--ivgi-red);
+    color: black;
+}
