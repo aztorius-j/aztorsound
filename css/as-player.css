@@ -2,13 +2,17 @@
     height: 600vh;
 }
 
+#as-player .sticky-element {
+    height: 100vh;
+}
+
 .video-wrapper {
     position: relative;
-    height: calc(var(--vh, 1vh) * 95);
+    height: calc(var(--vh, 1vh) * 96);
     transition: height 0.3s ease-in-out;
     width: 96%;
     left: 2%;
-    transform: translateY(2.5%);
+    top: 2%;
     border-radius: 2rem;
     overflow: hidden;
 }

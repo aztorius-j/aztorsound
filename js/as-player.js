@@ -143,7 +143,7 @@ async function changeCategory(newCategoryIndex) {
     const windowHeight = window.innerHeight;
 
     // Výpočet novej hodnoty transformácie
-    let newY = -newCategoryIndex * (window.innerHeight * 0.95);
+    let newY = -newCategoryIndex * (window.innerHeight * 0.96);
     categoryWrapper.style.transform = `translateY(${newY}px)`;
 
     previousCategoryIndex = newCategoryIndex;
@@ -164,7 +164,7 @@ async function changeCategory(newCategoryIndex) {
 // ADJUST CATEGORY POSITION
 const adjustCategoryPosition = debounce(() => {
     if (previousCategoryIndex === -1) return;
-    let newY = -previousCategoryIndex * (window.innerHeight * 0.95);
+    let newY = -previousCategoryIndex * (window.innerHeight * 0.96);
     categoryWrapper.style.transform = `translateY(${newY}px)`;
 }, 200);
 

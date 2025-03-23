@@ -78,8 +78,14 @@ h3 {
 }
 
 .fake-section {
-    height: 105vh;
+    height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.fake-section .section-title-container {
+    width: auto;
+    height: auto;
 }
