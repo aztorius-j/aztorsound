@@ -1,5 +1,6 @@
 #aztor {
     height: 250vh;
+    position: relative;
 }
 
 #aztor .sticky-element {
@@ -46,4 +47,39 @@
 .letter:first-of-type {
     background-color: var(--ivgi-red);
     color: black;
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+    color: #B0B0B0;
+    background-color: transparent;
+    padding: 1rem;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.contact {
+    text-align: center;
+    font-family: 'NeueHaasDisplayMedium';
+}
+
+.footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: flex-end;
+    font-size: 0.75rem;
+}
+
+.footer > :nth-child(2) {
+    text-align: center;
+}
+
+.footer > :nth-child(3) {
+    text-align: right;
+}
+
+.design p:first-child {
+    color: var(--white-color);
 }
