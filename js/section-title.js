@@ -26,7 +26,7 @@ class SectionTitle extends HTMLElement {
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    border: 2px solid #B0B0B0;
+                    border: 2px solid var(--grey-color);
                     border-radius: 1.5rem;
                 }
 
@@ -44,7 +44,7 @@ class SectionTitle extends HTMLElement {
                 }
 
                 h1 {
-                    color: #B0B0B0;
+                    color: var(--grey-color);
                 }
 
                 h2 {

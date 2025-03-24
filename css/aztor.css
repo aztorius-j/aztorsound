@@ -50,36 +50,37 @@
 }
 
 footer {
-    display: flex;
-    flex-direction: column;
-    color: #B0B0B0;
-    background-color: transparent;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: flex-end;
+    font-size: 0.75rem;
+    color: var(--grey-color);
     padding: 1rem;
     position: absolute;
     bottom: 0;
     width: 100%;
 }
 
-.contact {
-    text-align: center;
-    font-family: 'NeueHaasDisplayMedium';
-}
-
-.footer {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    align-items: flex-end;
-    font-size: 0.75rem;
-}
-
-.footer > :nth-child(2) {
+footer > :nth-child(2) {
     text-align: center;
 }
 
-.footer > :nth-child(3) {
+footer > :nth-child(3) {
     text-align: right;
 }
 
 .design p:first-child {
     color: var(--white-color);
+}
+
+.social svg {
+    width: 2.5rem;
+    height: 2.5rem;
+    fill: var(--grey-color);
+    cursor: pointer;
+    border-radius: 50%;
+    border: 1px solid var(--grey-color);
+    padding: 0.75rem;
+    position: relative;
+    top: 3px;
 }
