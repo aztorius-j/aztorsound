@@ -124,3 +124,9 @@ footer > :nth-child(3) {
         display: none;
     }
 }
+
+@media (hover: none) and (pointer: coarse) {
+    #aztor .sticky-element {
+        background-attachment: initial;
+    }
+}
