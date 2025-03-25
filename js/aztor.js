@@ -57,3 +57,46 @@ document.addEventListener('touchmove', (e) => {
     mouseX = e.touches[0].clientX;
     mouseY = e.touches[0].clientY;
 });
+
+const   socialIcons = Array.from(document.querySelectorAll('.social svg')).slice(0, 3),
+        instagram = socialIcons[0],
+        twitter = socialIcons[1],
+        facebook = socialIcons[2];
+const   answers = {
+            first: "I don't have xy",
+            second: "Don't have yz neither...",
+            third: "You know what? Send me an email"
+        }
+
+let clickCount = 0;
+let lastClickedIcon = null;
+const platforms = ['Instagram', 'Twitter', 'Facebook'];
+const social = document.querySelector('.social'),
+      spanMessage = document.querySelector('.message'),
+      mailIcon = document.querySelector('.social a');
+
+socialIcons.forEach((icon, index) => {
+    icon.addEventListener('click', () => {
+        if (clickCount >= 3 || lastClickedIcon === icon) return;
+
+        lastClickedIcon = icon;
+        const keys = ['first', 'second', 'third'];
+        const key = keys[clickCount];
+        let message = answers[key];
+
+        message = message.replace('xy', platforms[index]).replace('yz', platforms[index]);
+        spanMessage.textContent = message;
+        spanMessage.style.display = 'inline';
+        clickCount++;
+    });
+});
+
+document.addEventListener('click', (e) => {
+    if (spanMessage.style.display === 'inline' && !social.contains(e.target)) {
+        spanMessage.style.display = 'none';
+    }
+});
+
+mailIcon.addEventListener('click', () => {
+    spanMessage.style.display = 'none';
+});

@@ -85,6 +85,34 @@ footer > :nth-child(3) {
     top: 3px;
 }
 
+.social a:last-of-type svg {
+    top: 0;
+}
+
+.social a {
+    display: inline-block;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    position: relative;
+    top: 3px;
+    overflow: hidden;
+}
+
+.message {
+    font-size: 1rem;
+    background-color: var(--white-color);
+    color: black;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem 1rem;
+    position: absolute;
+    top: -2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    display: none;
+}
+
 @media screen and (max-width: 540px) {
     footer {
         grid-template-columns: 1fr;
