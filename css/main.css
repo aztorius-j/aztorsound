@@ -72,31 +72,3 @@ button {
     height: 100%;
     display: flex;
 }
-
-#landing-page {
-    height: 100vh;
-    background: url('../img/aztorsound-yellow.gif') 50% 50% / cover no-repeat;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-}
-
-
-h3 {
-    margin: 0;
-    padding: 0;
-    font-size: clamp(1rem, 10vw, 5rem);
-}
-
-.fake-section {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.fake-section .section-title-container {
-    width: auto;
-    height: auto;
-}
