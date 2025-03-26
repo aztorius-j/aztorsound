@@ -53,5 +53,10 @@ export const artistsArray = [
         name: 'Hurooonky',
         type: 'podcasters',
         poster: 'img/cooperations/hurooonky.jpeg'
+    },
+    {
+        name: 'Lubomir Mazak',
+        type: 'producer',
+        poster: 'img/cooperations/lubo-mazak.png'
     }
 ];
