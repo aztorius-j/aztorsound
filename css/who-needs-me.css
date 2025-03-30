@@ -5,12 +5,20 @@
 #who-needs-me .sticky-element {
     height: 100vh;
     display: grid;
-    grid-template-rows: 4fr 1fr 7fr;
+    grid-template-rows: 3fr 3fr 6fr;
+    padding: 1rem;
 }
 
 #who-needs-me .section-title-container {
     justify-content: flex-start;
-    padding: 5rem 0 5rem 44%;
+    align-items: center;
+    padding-left: 44%;
+}
+
+.short-paragraph {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .short-paragraph p {
@@ -28,39 +36,23 @@
     justify-content: center;
     flex-wrap: wrap;
     gap: 2rem;
-    max-width: 960px;
+    max-width: 860px;
     margin: 0 auto;
     width: 100%;
 }
 
-.first-line,
-.second-line,
-.third-line,
-.fourth-line {
+.customers-line {
     display: flex;
+    justify-content: flex-start;
+    gap: 1rem;
 }
 
-.first-line {
-    padding-left: 10%;
-}
-
-.second-line {
-    padding-left: 20%;
-}
-
-.third-line {
-    padding-left: 30%;
-}
-
-.fourth-line {
-    padding-left: 40%;
-}
+.customers-line:nth-of-type(4) { justify-content: flex-end; }
 
 .customer {
     font-size: 1.5rem;
     border: 1px solid var(--white-color);
     border-radius: 1rem;
     padding: 0.7rem 1rem;
-    margin-right: 1rem;
     white-space: nowrap;
 }
