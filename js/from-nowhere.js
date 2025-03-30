@@ -47,7 +47,7 @@ const initializeServiceItems = () => {
 
 const initializeSmallText = () => {
     lines.forEach((line, index) => {
-        const offset = (index ** 1.5) * 2;
+        const offset = (index ** 1.4) * 2;
         line.style.transform = `translateY(${offset}px)`;
     });
 };
@@ -73,7 +73,7 @@ const triggerAnimation = () => {
         animationTriggered = false;
         
         lines.forEach((line, index) => {
-            const offset = (index ** 1.5) * 2;
+            const offset = (index ** 1.4) * 2;
             line.style.transform = `translateY(${offset}px)`;
         });
 
