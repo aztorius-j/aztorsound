@@ -5,7 +5,7 @@
 #who-needs-me .sticky-element {
     height: 100vh;
     display: grid;
-    grid-template-rows: 5fr 7fr;
+    grid-template-rows: 4fr 1fr 7fr;
 }
 
 #who-needs-me .section-title-container {
@@ -13,9 +13,19 @@
     padding: 5rem 0 5rem 44%;
 }
 
+.short-paragraph p {
+    font-size: 2rem;
+    text-align: center;
+}
+
+.short-paragraph b {
+    font-family: 'NeueHaasDisplayBold';
+}
+
 .customers-wrapper {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     flex-wrap: wrap;
     gap: 2rem;
     max-width: 960px;
