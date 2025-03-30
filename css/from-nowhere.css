@@ -1,4 +1,4 @@
-#wkndhrs {
+#from-nowhere {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -64,7 +64,7 @@
     will-change: transform;
 }
 
-#wkndhrs .section-title-container {
+#from-nowhere .section-title-container {
     justify-content: flex-start;
     padding: 5rem 0 5rem 20%;
 }
@@ -79,7 +79,7 @@
 
 /* GLOBAL 800px */
 @media screen and (max-width: 800px) {
-    #wkndhrs .section-title-container {
+    #from-nowhere .section-title-container {
         padding: 1rem 0 3rem 20%;
     }
 }
@@ -115,7 +115,7 @@
         font-size: 3rem;
     }
 
-    #wkndhrs .section-title-container {
+    #from-nowhere .section-title-container {
         padding: 4rem 0 3rem 20%;
     }
 }
@@ -130,7 +130,7 @@
         font-size: clamp(2.75rem, 14vw, 4rem);
     }
 
-    #wkndhrs .section-title-container {
+    #from-nowhere .section-title-container {
         padding: 1rem 0 3rem 1rem;
     }
 }

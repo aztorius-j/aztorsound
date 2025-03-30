@@ -1,4 +1,4 @@
-const wkndhrs = document.getElementById('wkndhrs'),
+const fromNowhereSection = document.getElementById('from-nowhere'),
       smallText = document.querySelector('.small-text'),
       lines = Array.from(document.querySelectorAll('.line')),
       serviceItems = Array.from(document.querySelectorAll('.service-item'));
@@ -12,9 +12,9 @@ const easeInOutQuad = (t) => {
 };
 
 const updateScrollPoints = () => {
-    scrollPointOne = wkndhrs.previousElementSibling.offsetTop + wkndhrs.previousElementSibling.offsetHeight;
+    scrollPointOne = fromNowhereSection.previousElementSibling.offsetTop + fromNowhereSection.previousElementSibling.offsetHeight;
     scrollPointTwo = scrollPointOne + smallText.offsetTop + smallText.clientHeight * 0.8;
-    scrollPointThree = scrollPointOne + wkndhrs.clientHeight;
+    scrollPointThree = scrollPointOne + fromNowhereSection.clientHeight;
 
     endingOffsets = [
         scrollPointThree - 250,
