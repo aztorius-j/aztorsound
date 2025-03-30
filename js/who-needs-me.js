@@ -1,24 +1,20 @@
 const   customerLines = Array.from(document.querySelectorAll('.customers-line')),
         secondLine = customerLines[1],
         thirdLine = customerLines[2],
+        fourthLine = customerLines[3],
         customersWrapper = document.querySelector('.customers-wrapper');
+
+let     secondPadding = 0,
+        thirdPadding = 0;
 
 function updateLinesPadding() {
 
-    const wrapperWidth = customersWrapper.getBoundingClientRect().width;
-    const viewportWidth = window.innerWidth;
+    const fourthLineChildren = Array.from(fourthLine.children);
+    const totalChildrenWidth = fourthLineChildren.reduce((sum, el) => sum + el.getBoundingClientRect().width, 0);
+    const totalPadding = customersWrapper.getBoundingClientRect().width - totalChildrenWidth - 32;
 
-    const maxWrapperWidth = parseFloat(getComputedStyle(customersWrapper).maxWidth) || 860;
-    const minViewport = 600;
-
-    const secondMaxPadding = 90;
-    const thirdMaxPadding = 180;
-
-    const range = maxWrapperWidth - minViewport;
-    const progress = Math.max(0, Math.min((wrapperWidth - minViewport) / range, 1));
-
-    const secondPadding = viewportWidth < minViewport ? 0 : progress * secondMaxPadding;
-    const thirdPadding = viewportWidth < minViewport ? 0 : progress * thirdMaxPadding;
+    secondPadding = totalPadding / 3;
+    thirdPadding = totalPadding / 3 * 2;
 
     secondLine.style.paddingLeft = `${secondPadding}px`;
     thirdLine.style.paddingLeft = `${thirdPadding}px`;
