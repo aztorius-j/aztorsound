@@ -3,7 +3,7 @@
 }
 
 .about-wrapper {
-    height: 100vh;
+    min-height: 100vh;
     display: grid;
     grid-template-rows: 4fr 8fr;
 }
