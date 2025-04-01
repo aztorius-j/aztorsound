@@ -78,7 +78,6 @@ const customerAppear = () => {
             customers[index].style.opacity = '0';
         }
     });
-    console.log(translatePerc);
 }
 
 window.addEventListener('scroll', customerAppear);
