@@ -42,8 +42,8 @@ html {
 
 body {
     padding: 0;
-    max-width: 2000px;
     margin: 0 auto;
+    max-width: 2000px;
     font-family: 'NeueHaasDisplayLight';
     color: var(--white-color);
     background-color: black;
