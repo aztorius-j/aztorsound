@@ -19,6 +19,8 @@
 
 <body>
 
+    <div id="tsparticles"></div>
+
     <section id="landing-page">
         <h3>AZTORSOUND</h3>
     </section>
@@ -326,7 +328,22 @@
 
     </section>
 
-    
+    <script src="https://cdn.jsdelivr.net/npm/@tsparticles/preset-stars@3.0.2/tsparticles.preset.stars.bundle.min.js"></script>
+
+    <script>
+        window.addEventListener("DOMContentLoaded", async () => {
+        await tsParticles.load({
+            id: "tsparticles",
+            options: {
+            preset: "stars",
+            fullScreen: {
+                enable: true,
+                zIndex: 0
+            }
+            }
+        });
+        });
+    </script>
 
     <script type="module" src="js/section-title.js"></script>
     <script type="module" src="js/about-me.js"></script>

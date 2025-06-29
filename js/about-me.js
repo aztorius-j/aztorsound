@@ -13,7 +13,7 @@ const updateBackgroundProgress = () => {
     const backgroundProgress = Math.max(0, window.scrollY - backgroundStart);
     const backgroundPercentage = Math.min(100, (backgroundProgress * 100) / backgroundTotal);
 
-    aboutContainer.style.backgroundImage = `linear-gradient(to top, white ${backgroundPercentage}%, black ${backgroundPercentage}%)`;
+    aboutContainer.style.backgroundImage = `linear-gradient(to top, white ${backgroundPercentage}%, transparent ${backgroundPercentage}%)`;
 };
 
 window.addEventListener("scroll", updateBackgroundProgress);

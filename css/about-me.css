@@ -18,7 +18,7 @@
     display: grid;
     grid-template-rows: 9fr 3fr;
     align-items: center;
-    background-image: linear-gradient(to top, white 0%, black 0%);
+    background-image: linear-gradient(to top, white 0%, transparent 0%);
 }
 
 .about-big {

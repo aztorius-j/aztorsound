@@ -55,7 +55,7 @@ const artistScroll = () => {
         const artistCenter = artistRect.left + artistRect.width / 2;
         const distanceFromCenter = Math.abs(viewportCenter - artistCenter);
         const maxDistance = viewportCenter;
-        const scale = Math.max(0.8, 1 - (distanceFromCenter / maxDistance) * 0.2);
+        const scale = Math.max(0.8, 1 - (distanceFromCenter / maxDistance) * 0.1);
         artist.style.transform = `scale(${scale})`;
 
         // OPACITY LOGIC
