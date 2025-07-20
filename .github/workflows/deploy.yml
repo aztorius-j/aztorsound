@@ -24,6 +24,13 @@ jobs:
       - name: Build project
         run: npm run build
 
+      - name: Clean old assets on server
+        run: |
+          ssh -p 27171 ${{ secrets.WEBSUPPORT_USER }}@${{ secrets.WEBSUPPORT_HOST }} \
+          "rm -rf aztorsound.com/web/assets"
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.WEBSUPPORT_SSH_KEY }}
+
       - name: Deploy via SSH
         uses: appleboy/scp-action@v0.1.4
         with:
