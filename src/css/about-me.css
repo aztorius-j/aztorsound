@@ -1,0 +1,89 @@
+#about {
+    height: 250vh;
+}
+
+.about-wrapper {
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: 4fr 8fr;
+}
+
+#about .section-title-container {
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 0 0 38%;
+}
+
+.about-container {
+    display: grid;
+    grid-template-rows: 9fr 3fr;
+    align-items: center;
+    background-image: linear-gradient(to top, white 0%, transparent 0%);
+}
+
+.about-big {
+    font-size: 3rem;
+    text-align: center;
+    padding: 0 10%;
+    mix-blend-mode: difference;
+}
+
+.about-small {
+    color: black;
+    text-align: center;
+    font-family: 'NeueHaasDisplayMedium';
+    width: 25rem;
+    justify-self: end;
+    margin-right: 2rem;
+}
+
+@media screen and (max-width: 1040px) {
+    .about-big {
+        font-size: clamp(1rem, 4.5vw, 3rem);
+    }
+}
+
+@media screen and (max-width: 840px) {
+    .about-small {
+        justify-self: center;
+        margin-right: 0;
+    }
+}
+
+@media screen and (max-width: 440px) {
+    #about .section-title-container {
+        justify-content: flex-start;
+        align-items: center;
+        padding: 0 0 0 1rem;
+    }
+
+    .about-container {
+        grid-template-rows: auto auto;
+        padding: 1rem;
+    }
+
+    .about-big {
+        padding: 0 1rem;
+        font-size: 1.5rem;
+        word-wrap: break-word;
+    }
+
+    .about-small {
+        width: 100%;
+    }
+}
+
+@media screen and (max-height: 500px) and (min-width: 600px) {
+    .about-container {
+        grid-template-rows: auto auto;
+        padding: 0;
+    }
+
+    .about-big {
+        font-size: clamp(1rem, 7vh, 3rem);
+    }
+
+    .about-small {
+        font-size: clamp(0.5rem, 4vh, 1rem);
+    }
+}

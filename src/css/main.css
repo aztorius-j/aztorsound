@@ -1,0 +1,83 @@
+:root {
+    --heading-size: clamp(3.5rem, 8vw, 6rem);
+    --buttons-size: 3rem;
+    --white-color: #ffffff;
+    --hover-color: #e4e4e4;
+    --grey-color: #B0B0B0;
+    --ivgi-red: #FF1216;
+}
+
+@font-face {
+    font-family: 'NeueHaasDisplayLight';
+    src: url(/fonts/NeueHaasDisplayLight.woff2) format('woff2');
+}
+
+@font-face {
+    font-family: 'NeueHaasDisplayMedium';
+    src: url(/fonts/NeueHaasDisplayMedium.woff2) format('woff2');
+}
+
+@font-face {
+    font-family: 'NeueHaasDisplayBold';
+    src: url(/fonts/NeueHaasDisplayBold.woff2) format('woff2');
+}
+
+@font-face {
+    font-family: 'Alpino-Variable';
+    src:    url('/fonts/Alpino-Variable.woff2') format('woff2'),
+            url('/fonts/Alpino-Variable.woff') format('woff'),
+            url('/fonts/Alpino-Variable.ttf') format('truetype');
+    font-weight: 100 900;
+    font-display: swap;
+    font-style: normal;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    padding: 0;
+    margin: 0 auto;
+    max-width: 2000px;
+    font-family: 'NeueHaasDisplayLight';
+    color: var(--white-color);
+    background-color: black;
+    overflow-x: clip;
+}
+
+a, p, h1, h2, h3, h4, h5, h6, button {
+    color: inherit;
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+button {
+    cursor: pointer;
+}
+
+.sticky-element {
+    position: sticky;
+    top: 0;
+}
+
+.section-title-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+#tsparticles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}

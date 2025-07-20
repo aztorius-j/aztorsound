@@ -1,0 +1,25 @@
+{
+  "name": "aztorsound",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aztorius-j/aztorsound.git"
+  },
+  "keywords": [],
+  "author": "aztorius-j",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aztorius-j/aztorsound/issues"
+  },
+  "homepage": "https://github.com/aztorius-j/aztorsound#readme",
+  "description": "",
+  "devDependencies": {
+    "vite": "^7.0.5"
+  }
+}

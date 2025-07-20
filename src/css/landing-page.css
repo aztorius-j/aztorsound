@@ -1,0 +1,19 @@
+#landing-page {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h3 {
+    font-family: 'NeueHaasDisplayBold';
+    font-size: clamp(1rem, 12vw, 10rem);
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+#landing-page p {
+    font-size: clamp(0.75rem, 2.75vw, 1.75rem);
+}

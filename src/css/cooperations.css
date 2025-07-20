@@ -1,0 +1,139 @@
+:root {
+    --artist-width: 400px;
+}
+
+#cooperations .section-title-container {
+    justify-content: flex-end;
+    padding: 5rem 20% 7rem 0;
+}
+
+.cooperations-wrapper {
+    display: flex;
+    padding-bottom: 6rem;
+    transform: translateX(0);
+}
+
+.artists-container {
+    display: flex;
+    gap: 6rem;
+}
+
+.artist {
+    width: var(--artist-width);
+    height: var(--artist-width);
+    border: 3px solid var(--white-color);
+    flex-shrink: 0;
+    transform: scale(1);
+    position: relative;
+}
+
+.artist-description {
+    position: absolute;
+    top: -33px;
+    opacity: 0;
+}
+
+.artist-description h5 {
+    color: var(--white-color);
+    font-size: 2rem;
+    line-height: 0.75em;
+    white-space: nowrap;
+}
+
+.artist small {
+    color: var(--ivgi-red);
+    font-size: 1.2rem;
+}
+
+.fake-element {
+    width: calc((100vw - var(--artist-width)) / 2);
+    flex-shrink: 0;
+}
+
+
+/* MAX-HEIGHT MEDIA QUERIES */
+@media screen and (max-height: 680px) {
+    #cooperations .section-title-container {
+        justify-content: flex-end;
+        padding: 1rem 20% 4rem 0;
+    }
+}
+
+@media screen and (max-height: 580px) {
+    :root {
+        --artist-width: 280px;
+    }
+
+    .artists-container {
+        gap: 3rem;
+    }
+
+    .artist-description {
+        top: -24px;
+    }
+
+    .artist-description h5 {
+        font-size: 1.5rem;
+        line-height: 0.7em;
+    }
+    
+    .artist small {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-height: 460px) {
+    :root {
+        --artist-width: 180px;
+    }
+
+    .artists-container {
+        gap: 3rem;
+    }
+
+    .artist-description {
+        top: -33px;
+    }
+
+    .artist-description h5 {
+        font-size: 1rem;
+        line-height: 0.9em;
+    }
+    
+    .artist small {
+        display: block;
+        font-size: 0.8rem;
+    }
+}
+
+/* PORTRAIT MEDIA QUERIES */
+@media screen and (max-width: 480px) and (orientation: portrait) {
+    #cooperations .section-title-container {
+        justify-content: flex-start;
+        padding: 3rem 0 6rem 1rem;
+    }
+
+    :root {
+        --artist-width: 320px;
+    }
+
+    .artists-container {
+        gap: 4rem;
+    }
+
+    .artist-description {
+        top: -46px;
+    }
+
+    .artist-description h5 {
+        color: var(--white-color);
+        font-size: 1.75rem;
+        line-height: 0.75em;
+    }
+    
+    .artist small {
+        color: var(--ivgi-red);
+        font-size: 1rem;
+        display: block;
+    }
+}

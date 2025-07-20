@@ -1,0 +1,132 @@
+#aztor {
+    height: 250vh;
+    position: relative;
+}
+
+#aztor .sticky-element {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('/img/aztorsound-bg-edit.webp') no-repeat center / cover;
+    background-attachment: fixed;
+}
+
+#light-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    background: radial-gradient(circle 200px at center, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 1) 100%);
+    z-index: 10;
+}
+
+#aztor h4 {
+    font-family: 'Alpino-Variable';
+    font-weight: 900;
+    font-size: clamp(1rem, 11vw, 8rem);
+    color: var(--ivgi-red);
+    display: flex;
+    opacity: 0;
+    filter: blur(10px);
+    z-index: 1000;
+}
+
+.letter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1.75em;
+    height: 1.75em;
+    border: 0.05em solid var(--ivgi-red);
+    border-radius: 50%;
+}
+
+.letter:first-of-type {
+    background-color: var(--ivgi-red);
+    color: black;
+}
+
+footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: flex-end;
+    font-size: 0.75rem;
+    color: var(--grey-color);
+    padding: 1rem;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+footer > :nth-child(2) {
+    text-align: center;
+}
+
+footer > :nth-child(3) {
+    text-align: right;
+}
+
+.design p:first-child {
+    color: var(--white-color);
+}
+
+.social svg {
+    width: 2.5rem;
+    height: 2.5rem;
+    fill: var(--grey-color);
+    cursor: pointer;
+    border-radius: 50%;
+    border: 1px solid var(--grey-color);
+    padding: 0.75rem;
+    position: relative;
+    top: 3px;
+}
+
+.social a:last-of-type svg {
+    top: 0;
+}
+
+.social a {
+    display: inline-block;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    position: relative;
+    top: 3px;
+    overflow: hidden;
+}
+
+.message {
+    font-size: 1rem;
+    background-color: var(--white-color);
+    color: black;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem 1rem;
+    position: absolute;
+    top: -2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    display: none;
+}
+
+@media screen and (max-width: 540px) {
+    footer {
+        grid-template-columns: 1fr;
+        align-items: center;
+    }
+
+    .all-rights,
+    .design {
+        display: none;
+    }
+}
+
+@media (hover: none) and (pointer: coarse) {
+    #aztor .sticky-element {
+        background-attachment: initial;
+    }
+}
