@@ -24,11 +24,15 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: Clean old assets on server
+      - name: Create SSH key
         run: |
-          ssh -o StrictHostKeyChecking=no -p 27171 ${{ secrets.WEBSUPPORT_USER }}@${{ secrets.WEBSUPPORT_HOST }} "rm -rf aztorsound.com/web/assets"
+          echo "${{ secrets.WEBSUPPORT_SSH_KEY }}" > key.pem
+          chmod 600 key.pem
 
-      - name: Deploy via SSH
+      - name: Clean assets folder before deploy
+        run: ssh -i key.pem -o StrictHostKeyChecking=no -p 27171 ${{ secrets.WEBSUPPORT_USER }}@${{ secrets.WEBSUPPORT_HOST }} "rm -rf aztorsound.com/web/assets"
+
+      - name: Deploy via SCP
         uses: appleboy/scp-action@v0.1.4
         with:
           host: ${{ secrets.WEBSUPPORT_HOST }}
@@ -38,3 +42,6 @@ jobs:
           source: "dist/**"
           target: "aztorsound.com/web"
           strip_components: 1
+
+      - name: Remove SSH key
+        run: rm key.pem
