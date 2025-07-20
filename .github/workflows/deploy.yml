@@ -31,5 +31,6 @@ jobs:
           username: ${{ secrets.WEBSUPPORT_USER }}
           port: 27171
           key: ${{ secrets.WEBSUPPORT_SSH_KEY }}
-          source: "dist/"
+          source: "dist/**"
           target: "aztorsound.com/web"
+          strip_components: 1
