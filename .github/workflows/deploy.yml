@@ -26,10 +26,7 @@ jobs:
 
       - name: Clean old assets on server
         run: |
-          ssh -p 27171 ${{ secrets.WEBSUPPORT_USER }}@${{ secrets.WEBSUPPORT_HOST }} \
-          "rm -rf aztorsound.com/web/assets"
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.WEBSUPPORT_SSH_KEY }}
+          ssh -o StrictHostKeyChecking=no -p 27171 ${{ secrets.WEBSUPPORT_USER }}@${{ secrets.WEBSUPPORT_HOST }} "rm -rf aztorsound.com/web/assets"
 
       - name: Deploy via SSH
         uses: appleboy/scp-action@v0.1.4
