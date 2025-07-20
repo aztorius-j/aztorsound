@@ -48,6 +48,7 @@ body {
     color: var(--white-color);
     background-color: black;
     overflow-x: hidden;
+    width: 100vw;
 }
 
 a, p, h1, h2, h3, h4, h5, h6, button {
