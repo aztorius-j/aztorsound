@@ -1,9 +1,9 @@
 #about {
-    height: 250vh;
+    height: 250svh;
 }
 
 .about-wrapper {
-    min-height: 100vh;
+    min-height: 100svh;
     display: grid;
     grid-template-rows: 4fr 8fr;
 }
@@ -80,10 +80,10 @@
     }
 
     .about-big {
-        font-size: clamp(1rem, 7vh, 3rem);
+        font-size: clamp(1rem, 7svh, 3rem);
     }
 
     .about-small {
-        font-size: clamp(0.5rem, 4vh, 1rem);
+        font-size: clamp(0.5rem, 4svh, 1rem);
     }
 }

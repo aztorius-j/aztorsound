@@ -1,26 +1,39 @@
-const aboutContainer = document.querySelector('.about-container'),
-      sectionTitleContainer = document.querySelector('#about .section-title-container'),
-      aboutSection = document.getElementById('about');
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-let backgroundStart, backgroundTotal;
+gsap.registerPlugin(ScrollTrigger);
 
-const updateDimensions = () => {
-    backgroundStart = aboutSection.getBoundingClientRect().top + window.scrollY + sectionTitleContainer.clientHeight;
-    backgroundTotal = aboutSection.clientHeight - window.innerHeight;
-};
-
-const updateBackgroundProgress = () => {
-    const backgroundProgress = Math.max(0, window.scrollY - backgroundStart);
-    const backgroundPercentage = Math.min(100, (backgroundProgress * 100) / backgroundTotal);
-
-    aboutContainer.style.backgroundImage = `linear-gradient(to top, white ${backgroundPercentage}%, transparent ${backgroundPercentage}%)`;
-};
-
-window.addEventListener("scroll", updateBackgroundProgress);
-window.addEventListener("resize", () => {
-    updateDimensions();
-    updateBackgroundProgress();
+// Sticky náhrada
+gsap.to(".sticky-element", {
+  scrollTrigger: {
+    trigger: "#about",
+    start: "top top",
+    end: "bottom bottom",
+    pin: true,
+    pinSpacing: false,
+  }
 });
 
-updateDimensions();
-updateBackgroundProgress();
+const aboutContainer = document.querySelector('.about-container');
+const sectionTitleContainer = document.querySelector('#about .section-title-container');
+
+let currentOffset = sectionTitleContainer.clientHeight;
+
+ScrollTrigger.create({
+  trigger: '.sticky-element',
+  start: 'bottom bottom',
+  endTrigger: '#about',
+  end: `bottom+=${currentOffset} bottom`,
+  scrub: true,
+  onUpdate: self => {
+    const progress = self.progress;
+    const percentage = progress * 100;
+    aboutContainer.style.backgroundImage = `linear-gradient(to top, white ${percentage}%, transparent ${percentage}%)`;
+  }
+});
+
+// Prepočítaj pozície pri resize, aby scrollTrigger pin ostalo plynulé
+window.addEventListener('resize', () => {
+  currentOffset = sectionTitleContainer.clientHeight;
+  ScrollTrigger.refresh();
+});

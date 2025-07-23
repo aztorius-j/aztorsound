@@ -262,20 +262,7 @@
   </section>
 
   <script src="https://cdn.jsdelivr.net/npm/@tsparticles/preset-stars@3.0.2/tsparticles.preset.stars.bundle.min.js"></script>
-  <script>
-    window.addEventListener("DOMContentLoaded", async () => {
-    await tsParticles.load({
-      id: "tsparticles",
-      options: {
-      preset: "stars",
-      fullScreen: {
-        enable: true,
-        zIndex: 0
-      }
-      }
-    });
-    });
-  </script>
+  <script type="module" src="src/js/ts-particles.js"></script>
 
   <script type="module" src="src/js/lenis-gsap-setup.js"></script>
   <script type="module" src="src/js/section-title.js"></script>
