@@ -37,8 +37,8 @@
 }
 
 html {
-    scroll-behavior: smooth;
-    overflow-x: hidden;
+    scroll-behavior: auto;
+    overflow: hidden;    
 }
 
 body {
@@ -48,7 +48,7 @@ body {
     font-family: 'NeueHaasDisplayLight';
     color: var(--white-color);
     background-color: black;
-    overflow-x: clip;
+    overflow: hidden;
 }
 
 a, p, h1, h2, h3, h4, h5, h6, button {
