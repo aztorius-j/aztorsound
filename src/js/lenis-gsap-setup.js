@@ -22,6 +22,11 @@ function raf(time) {
 
 requestAnimationFrame(raf);
 
+// Scroll to top on refresh
+requestAnimationFrame(() => {
+  lenis.scrollTo(0, { immediate: true });
+});
+
 lenis.on('scroll', (e) => {
   console.log('scrolling', e);
 });

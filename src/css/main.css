@@ -36,9 +36,13 @@
     box-sizing: border-box;
 }
 
+html, body {
+    overflow: hidden;
+    overflow-anchor: none;
+}
+
 html {
-    scroll-behavior: auto;
-    overflow: hidden;    
+    scroll-behavior: auto; 
 }
 
 body {
@@ -48,7 +52,6 @@ body {
     font-family: 'NeueHaasDisplayLight';
     color: var(--white-color);
     background-color: black;
-    overflow: hidden;
 }
 
 a, p, h1, h2, h3, h4, h5, h6, button {
