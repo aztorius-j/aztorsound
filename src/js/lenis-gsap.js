@@ -29,17 +29,13 @@ function raf(time) {
 
 requestAnimationFrame(raf);
 
-// Scroll to top on refresh
-requestAnimationFrame(() => {
-  lenis.scrollTo(0, { immediate: true });
-});
-
 // Recalculate positions on resize to keep ScrollTrigger pinning smooth
 window.addEventListener('resize', () => {
   ScrollTrigger.refresh();
 });
 
 // Configure ScrollTrigger to work with Lenis' custom scroll behavior
+// Also resets scroll position to top on page refresh (intended behavior)
 document.addEventListener('DOMContentLoaded', () => {
   ScrollTrigger.scrollerProxy(document.body, {
     scrollTop(value) {
@@ -71,7 +67,7 @@ const aboutContainer = document.querySelector('.about-container'),
 
 gsap.to(aboutContainer, {
   scrollTrigger: {
-    trigger: '#about .sticky-element',
+    trigger: '#about .about-wrapper',
     start: 'top top',
     endTrigger: '#about',
     end: 'bottom bottom',
@@ -81,7 +77,7 @@ gsap.to(aboutContainer, {
 });
 
 ScrollTrigger.create({
-  trigger: '#about .sticky-element',
+  trigger: '#about .about-wrapper',
   start: 'bottom bottom',
   endTrigger: '#about',
   end: `bottom+=${sctOffset} bottom`,
@@ -90,3 +86,32 @@ ScrollTrigger.create({
     aboutContainer.style.backgroundImage = `linear-gradient(to top, white ${bgProgress}%, transparent ${bgProgress}%)`;
   }
 });
+
+// *** COOPERATIONS section ***
+document.addEventListener('DOMContentLoaded', () => {
+  ScrollTrigger.create({
+    trigger: '#cooperations',
+    start: 'top top',
+    end: () => {
+      const artistContainer = document.querySelector('.artists-container');
+      const frame = document.querySelector('.artist');
+      const frameWidth = frame.getBoundingClientRect().width;
+      return `+=${artistContainer.scrollWidth + frameWidth}`;
+    },
+    pin: true,
+    pinSpacing: true,
+    scrub: true,
+    onUpdate: self => {
+      const artistContainer = document.querySelector('.artists-container');
+      const artistFrame = document.querySelector('.artist');
+      const artistFrameWidth = artistFrame.getBoundingClientRect().width;
+      const maxTranslate = artistContainer.scrollWidth - artistFrameWidth;
+
+      const translateX = -self.progress * maxTranslate;
+
+      artistContainer.style.transform = `translateX(${translateX}px)`;
+    }
+  });
+});
+
+// dorobiť scale, opacity, inak vyriešiť responzívny dizajn, sectionTitleContainer - zrušiť paddingy, tým pádom inak vyriešiť cely layout sekcie
