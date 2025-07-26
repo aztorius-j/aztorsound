@@ -1,4 +1,4 @@
-const artistContainer = document.querySelector('.artists-container');
+const artistList = document.querySelector('#cooperations .artists-list');
 
 import { artistsArray } from './artists.js';
 
@@ -21,5 +21,5 @@ artistsArray.forEach((artist) => {
   artistDescription.innerHTML = `<h5>${artist.name} <small>/${artist.type}/</small></h5>`;
 
   artistFrame.appendChild(artistDescription);
-  artistContainer.appendChild(artistFrame);
+  artistList.appendChild(artistFrame);
 });

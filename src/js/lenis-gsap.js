@@ -90,27 +90,20 @@ ScrollTrigger.create({
 document.addEventListener('DOMContentLoaded', () => {
   ScrollTrigger.create({
     trigger: '#cooperations',
-    start: 'top top',
+    start: 'bottom bottom',
     end: () => {
       const artistContainer = document.querySelector('.artists-container');
-      const frame = document.querySelector('.artist');
-      const frameWidth = frame.getBoundingClientRect().width;
-      return `+=${artistContainer.scrollWidth + frameWidth}`;
+      return `+=${artistContainer.scrollWidth - window.innerWidth}`;
     },
     pin: true,
     pinSpacing: true,
     scrub: true,
     onUpdate: self => {
       const artistContainer = document.querySelector('.artists-container');
-      const artistFrame = document.querySelector('.artist');
-      const artistFrameWidth = artistFrame.getBoundingClientRect().width;
-      const maxTranslate = artistContainer.scrollWidth - artistFrameWidth;
-
-      const translateX = -self.progress * maxTranslate;
-
+      const translateX = -self.progress * (artistContainer.scrollWidth - window.innerWidth);
       artistContainer.style.transform = `translateX(${translateX}px)`;
     }
   });
 });
 
-// dorobiť scale, opacity, inak vyriešiť responzívny dizajn, sectionTitleContainer - zrušiť paddingy, tým pádom inak vyriešiť cely layout sekcie
+// dorobiť scale, opacity
