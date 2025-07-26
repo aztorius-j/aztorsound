@@ -61,10 +61,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 // *** ABOUT ME section ***
-const aboutContainer = document.querySelector('.about-container'),
+const dynamicBg = document.querySelector('.dynamic-bg'),
       sectionTitleContainer = document.querySelector('#about .section-title-container');
 
-gsap.to(aboutContainer, {
+gsap.to(dynamicBg, {
   scrollTrigger: {
     trigger: '#about .about-wrapper',
     start: 'top top',
@@ -82,7 +82,7 @@ ScrollTrigger.create({
   end: () => `bottom+=${sectionTitleContainer.getBoundingClientRect().height} bottom`,
   onUpdate: self => {
     const bgProgress = self.progress * 100;
-    aboutContainer.style.backgroundImage = `linear-gradient(to top, white ${bgProgress}%, transparent ${bgProgress}%)`;
+    dynamicBg.style.backgroundImage = `linear-gradient(to top, white ${bgProgress}%, transparent ${bgProgress}%)`;
   }
 });
 
