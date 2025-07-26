@@ -62,8 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // *** ABOUT ME section ***
 const aboutContainer = document.querySelector('.about-container'),
-      sectionTitleContainer = document.querySelector('#about .section-title-container'),
-      sctOffset = sectionTitleContainer.clientHeight;
+      sectionTitleContainer = document.querySelector('#about .section-title-container');
 
 gsap.to(aboutContainer, {
   scrollTrigger: {
@@ -80,7 +79,7 @@ ScrollTrigger.create({
   trigger: '#about .about-wrapper',
   start: 'bottom bottom',
   endTrigger: '#about',
-  end: `bottom+=${sctOffset} bottom`,
+  end: () => `bottom+=${sectionTitleContainer.getBoundingClientRect().height} bottom`,
   onUpdate: self => {
     const bgProgress = self.progress * 100;
     aboutContainer.style.backgroundImage = `linear-gradient(to top, white ${bgProgress}%, transparent ${bgProgress}%)`;
