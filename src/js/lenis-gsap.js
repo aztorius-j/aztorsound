@@ -105,5 +105,3 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
-
-// dorobiť scale, opacity

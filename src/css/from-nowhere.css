@@ -132,7 +132,8 @@
     }
 
     #from-nowhere .section-title-container {
-        padding: 1rem 0 3rem 1rem;
+        padding-top: 1rem !important;
+        padding-bottom: 3rem !important;
     }
 
     .wrapper {
