@@ -18,7 +18,7 @@
   height: 100%;
 }
 
-.fluid-container {
+#about .fluid-container {
   height: 100%;
   display: grid;
   grid-template-rows: 58fr 42fr;
@@ -56,7 +56,7 @@
 }
 
 @media screen and (max-width: 440px) {
-  .fluid-container {
+  #about .fluid-container {
     padding: 0 1rem;
   }
 
@@ -72,7 +72,7 @@
 
 /* MAX HEIGHT MEDIA QUERIES */
 @media screen and (max-height: 700px) {
-  .fluid-container {
+  #about .fluid-container {
     grid-template-rows: 7fr 3fr;
   }
 

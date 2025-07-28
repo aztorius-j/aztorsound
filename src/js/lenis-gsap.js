@@ -15,9 +15,14 @@ import Lenis from 'lenis';
 import 'lenis/dist/lenis.css';
 
 // Initialize Lenis with smooth scroll forced on touch devices
+const isMobile = window.innerWidth < 768;
+
 const lenis = new Lenis({
   smooth: true,
   syncTouch: true,
+  duration: isMobile ? 1.2 : 1.8,
+  smoothWheel: true,
+  wheelMultiplier: 0.5,
 });
 
 // Use requestAnimationFrame to continuously update the scroll
@@ -39,12 +44,10 @@ window.addEventListener('resize', () => {
 document.addEventListener('DOMContentLoaded', () => {
   ScrollTrigger.scrollerProxy(document.body, {
     scrollTop(value) {
-      return arguments.length
-        ? lenis.scrollTo(value, { immediate: true })
-        : lenis.actualScroll;
+      return arguments.length ? lenis.scrollTo(value, {immediate: true}) : lenis.actualScroll;
     },
     getBoundingClientRect() {
-      return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight };
+      return {top: 0, left: 0, width: window.innerWidth, height: window.innerHeight};
     },
     pinType: document.body.style.transform ? 'transform' : 'fixed'
   });
@@ -105,3 +108,40 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+
+// *** FROM NOWHERE section ***
+const actionPillars = document.querySelectorAll('.action-pillars');
+const bigText = document.querySelector('#from-nowhere .big-text');
+
+function getStartOffsets() {
+  return ['17vw', '28vw', '40vw', '57vw'];
+}
+
+function getEndOffsets() {
+  return ['top+=8% center', 'top+=31% center', 'top+=50% center', 'top+=70% center'];
+}
+
+function createActionPillarsTrigger() {
+  const offsets = getStartOffsets();
+  const endOffsets = getEndOffsets();
+
+  ScrollTrigger.getAll().forEach(t => t.trigger === bigText && t.kill());
+
+  actionPillars.forEach((item, i) => {
+    gsap.set(item, { x: offsets[i] });
+
+    gsap.to(item, {
+      x: 0,
+      ease: 'sine.out',
+      scrollTrigger: {
+        trigger: bigText,
+        start: 'top bottom',
+        end: endOffsets[i],
+        scrub: true
+      }
+    });
+  });
+}
+
+document.addEventListener('DOMContentLoaded', createActionPillarsTrigger);
+window.addEventListener('resize', createActionPillarsTrigger);

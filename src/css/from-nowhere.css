@@ -1,45 +1,32 @@
 #from-nowhere {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    position: relative;
+  padding: 5rem 3rem;
 }
 
-.wrapper {
-    display: grid;
-    grid-template-columns: 4fr 8fr;
-    grid-auto-rows: auto;
-    gap: 10%;
-    width: 100%;
-    padding: 1rem 3rem;
+.text-wrapper {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 3fr 5fr;
+  gap: 10%;
 }
-
-.small-text,
-.big-text {
-    align-self: start;
-} 
 
 .line {
-    font-family: 'NeueHaasDisplayMedium';
-    font-size: 1rem;
-    letter-spacing: 0.02em;
-    position: relative;
-    transform: translateY(0);
-    transition: transform 1s ease;
-    white-space: nowrap;
+  font-family: 'NeueHaasDisplayMedium';
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  position: relative;
+  white-space: nowrap;
 }
 
 .line::before {
-    content: "";
-    background-color: black;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform: scaleY(var(--scale-value, var(--initial-scale, 1)));
-    transform-origin: bottom;
-    transition: transform 1s ease;
+  content: "";
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: scaleY(var(--scale-value, var(--initial-scale, 1)));
+  transform-origin: bottom;
 }
 
 .small-text .line:nth-child(1)  { --initial-scale: 1; }
@@ -56,96 +43,85 @@
 .small-text .line:nth-child(12) { --initial-scale: 2.94; }
 .small-text .line:nth-child(13) { --initial-scale: 3; }
 
-.service-item {
-    font-family: 'NeueHaasDisplayBold';
-    font-size: clamp(6.25rem, 9vw, 8rem);
-    line-height: 1em;
-    transform: translateX(0);
-    transition: transform 0.1s linear;
-    will-change: transform;
+.action-pillars {
+  font-family: 'NeueHaasDisplayBold';
+  font-size: clamp(6.25rem, 9vw, 8rem);
+  line-height: 1em;
+  will-change: transform;
 }
 
 #from-nowhere .section-title-container {
-    justify-content: flex-start;
-    padding: 5rem 0 5rem 20%;
+  padding-left: 20%;
+  margin-top: 6rem;
 }
 
 
 /* GLOBAL 1080px */
 @media screen and (max-width: 1080px) {
-    .service-item {
-        font-size: clamp(3.5rem, 7.5vw, 6rem);
-    }
-}
-
-/* GLOBAL 800px */
-@media screen and (max-width: 800px) {
-    #from-nowhere .section-title-container {
-        padding: 1rem 0 3rem 20%;
-    }
+  .action-pillars {
+    font-size: clamp(4rem, 8vw, 6rem);
+  }
 }
 
 /* DESKTOP 800px */
 @media screen and (max-width: 800px) and (hover: hover) and (pointer: fine) {
-    .wrapper {
-        display: flex;
-        flex-direction: column;
-        gap: 4rem;
-    }
+  .text-wrapper {
+    grid-template-columns: auto;
+    gap: 10svh;
+  }
 
-    .line {
-        font-size: 1rem;
-    }
+  .line {
+    font-size: 1rem;
+  }
 
-    .service-item {
-        font-size: clamp(4rem, 9vw, 6rem);
-    }
+  .action-pillars {
+    font-size: clamp(4rem, 9vw, 6rem);
+  }
 }
 
 /* PHONE 800px */
 @media screen and (max-width: 800px) and (hover: none) and (pointer: coarse) {
-    .wrapper {
-        gap: 5%;
-    }
+  #from-nowhere {
+    padding-bottom: 3rem;
+  }
 
-    .line {
-        font-size: 0.7rem;
-    }
+  .line {
+    font-size: 0.7rem;
+  }
 
-    .service-item {
-        font-size: 3rem;
-    }
-
-    #from-nowhere .section-title-container {
-        padding: 4rem 0 3rem 20%;
-    }
+  .action-pillars {
+    font-size: 3.5rem;
+  }
 }
 
 /* GLOBAL 440px */
 @media screen and (max-width: 440px) {
-    .line {
-        font-size: 0.775rem;
-    }
+  #from-nowhere {
+    padding: 0;
+  }
 
-    .service-item {
-        font-size: clamp(2.75rem, 14vw, 4rem);
-    }
+  .line {
+    font-size: 0.775rem;
+  }
 
-    #from-nowhere .section-title-container {
-        padding-top: 1rem !important;
-        padding-bottom: 3rem !important;
-    }
+  .action-pillars {
+    font-size: clamp(2.75rem, 14vw, 4rem);
+  }
 
-    .wrapper {
-        padding: 1rem;
-    }
+  #from-nowhere .section-title-container {
+    padding-top: 1rem !important;
+    padding-bottom: 3rem !important;
+  }
+
+  .text-wrapper {
+    padding: 1rem;
+  }
 }
 
 /* PHONE 440px */
 @media screen and (max-width: 440px) and (hover: none) and (pointer: coarse) {
-    .wrapper {
-        display: flex;
-        flex-direction: column;
-        gap: 4rem;
-    }
+  .text-wrapper {
+    grid-template-columns: auto;
+    gap: 10svh;
+  }
 }
