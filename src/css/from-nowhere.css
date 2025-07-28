@@ -15,33 +15,9 @@
   letter-spacing: 0.02em;
   position: relative;
   white-space: nowrap;
+  will-change: auto;
+  clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%);
 }
-
-.line::before {
-  content: "";
-  background-color: transparent;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  transform: scaleY(var(--scale-value, var(--initial-scale, 1)));
-  transform-origin: bottom;
-}
-
-.small-text .line:nth-child(1)  { --initial-scale: 1; }
-.small-text .line:nth-child(2)  { --initial-scale: 1.16; }
-.small-text .line:nth-child(3)  { --initial-scale: 1.34; }
-.small-text .line:nth-child(4)  { --initial-scale: 1.53; }
-.small-text .line:nth-child(5)  { --initial-scale: 1.73; }
-.small-text .line:nth-child(6)  { --initial-scale: 1.95; }
-.small-text .line:nth-child(7)  { --initial-scale: 2.18; }
-.small-text .line:nth-child(8)  { --initial-scale: 2.43; }
-.small-text .line:nth-child(9)  { --initial-scale: 2.66; }
-.small-text .line:nth-child(10) { --initial-scale: 2.80; }
-.small-text .line:nth-child(11) { --initial-scale: 2.86; }
-.small-text .line:nth-child(12) { --initial-scale: 2.94; }
-.small-text .line:nth-child(13) { --initial-scale: 3; }
 
 .action-pillars {
   font-family: 'NeueHaasDisplayBold';

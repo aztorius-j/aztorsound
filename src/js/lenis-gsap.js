@@ -110,8 +110,10 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // *** FROM NOWHERE section ***
-const actionPillars = document.querySelectorAll('.action-pillars');
 const bigText = document.querySelector('#from-nowhere .big-text');
+const actionPillars = document.querySelectorAll('.action-pillars');
+const smallText = document.querySelector('#from-nowhere .small-text');
+const lines = document.querySelectorAll('.line');
 
 function getStartOffsets() {
   return ['17vw', '28vw', '40vw', '57vw'];
@@ -143,5 +145,58 @@ function createActionPillarsTrigger() {
   });
 }
 
-document.addEventListener('DOMContentLoaded', createActionPillarsTrigger);
-window.addEventListener('resize', createActionPillarsTrigger);
+const initializeSmallText = () => {
+  lines.forEach((line, index) => {
+    const offset = (index ** 1.4) * 2;
+    line.style.transform = `translateY(${offset}px)`;
+  });
+};
+
+function createClipPathEffect() {
+
+  ScrollTrigger.create({
+    trigger: lines[7],
+    start: 'bottom bottom',
+    onEnter: () => {
+      lines.forEach(line => {
+        gsap.to(line, {
+          clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
+          transform: 'translateY(0)',
+          duration: 1.2,
+          ease: 'power2.out',
+          willChange: 'clip-path',
+          onComplete: () => {
+            // Optionally reset willChange to auto after animation
+            line.style.willChange = 'auto';
+          }
+        });
+      });
+    }
+  });
+
+  ScrollTrigger.create({
+    trigger: smallText,
+    start: 'top bottom+=100',
+    onLeaveBack: () => {
+      lines.forEach((line, index) => {
+        const offset = (index ** 1.4) * 2;
+        gsap.set(line, {
+          clipPath: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)',
+          willChange: 'auto',
+          y: offset,
+        });
+      });
+    }
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  initializeSmallText();
+  createClipPathEffect();
+  createActionPillarsTrigger();
+});
+  
+window.addEventListener('resize', () => {
+  createActionPillarsTrigger();
+  createClipPathEffect();
+});
