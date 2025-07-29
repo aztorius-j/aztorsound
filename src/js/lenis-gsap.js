@@ -152,24 +152,29 @@ const initializeSmallText = () => {
   });
 };
 
+let clipPathAnims = [];
+
 function createClipPathEffect() {
+  // Cancel any previous animations if they were running
+  clipPathAnims.forEach(anim => anim.kill());
+  clipPathAnims = [];
 
   ScrollTrigger.create({
     trigger: lines[7],
     start: 'bottom bottom',
     onEnter: () => {
-      lines.forEach(line => {
-        gsap.to(line, {
+      lines.forEach((line, index) => {
+        const anim = gsap.to(line, {
           clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
           transform: 'translateY(0)',
-          duration: 1.2,
-          ease: 'power2.out',
+          duration: 1 + index * 0.075,
+          ease: 'power2.inOut',
           willChange: 'clip-path',
           onComplete: () => {
-            // Optionally reset willChange to auto after animation
             line.style.willChange = 'auto';
           }
         });
+        clipPathAnims.push(anim);
       });
     }
   });
@@ -178,6 +183,10 @@ function createClipPathEffect() {
     trigger: smallText,
     start: 'top bottom+=100',
     onLeaveBack: () => {
+      // Cancel all animations to avoid overlap
+      clipPathAnims.forEach(anim => anim.kill());
+      clipPathAnims = [];
+
       lines.forEach((line, index) => {
         const offset = (index ** 1.4) * 2;
         gsap.set(line, {
