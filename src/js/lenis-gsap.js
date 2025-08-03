@@ -74,7 +74,7 @@ gsap.to(dynamicBg, {
     endTrigger: '#about',
     end: 'bottom bottom',
     pin: true,
-    pinSpacing: false,
+    pinSpacing: true
   }
 });
 
@@ -208,4 +208,23 @@ document.addEventListener('DOMContentLoaded', () => {
 window.addEventListener('resize', () => {
   createActionPillarsTrigger();
   createClipPathEffect();
+});
+
+// *** AS-PLAYER section ***
+const asPlayerSection = document.getElementById('as-player');
+
+document.addEventListener('DOMContentLoaded', () => {
+  ScrollTrigger.create({
+    trigger: asPlayerSection,
+    start: 'top top',
+    end: 'bottom bottom',
+    pin: true,
+    pinSpacing: false,
+    onUpdate:  self => {
+      const event = new CustomEvent('as-player-progress', {
+        detail: {progress: self.progress * 100}
+      });
+      document.dispatchEvent(event);
+    }
+  });
 });
