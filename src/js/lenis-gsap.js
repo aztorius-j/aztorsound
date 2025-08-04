@@ -34,14 +34,9 @@ function raf(time) {
 
 requestAnimationFrame(raf);
 
-// Recalculate positions on resize to keep ScrollTrigger pinning smooth
-window.addEventListener('resize', () => {
-  ScrollTrigger.refresh();
-});
-
 // Configure ScrollTrigger to work with Lenis' custom scroll behavior
 // Also resets scroll position to top on page refresh (intended behavior)
-document.addEventListener('DOMContentLoaded', () => {
+function setupScrollTrigger() {
   ScrollTrigger.scrollerProxy(document.body, {
     scrollTop(value) {
       return arguments.length ? lenis.scrollTo(value, {immediate: true}) : lenis.actualScroll;
@@ -53,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   ScrollTrigger.refresh(); // prevent any race conditions
-});
+}
 
 
 
@@ -67,83 +62,56 @@ document.addEventListener('DOMContentLoaded', () => {
 const dynamicBg = document.querySelector('.dynamic-bg'),
       sectionTitleContainer = document.querySelector('#about .section-title-container');
 
-gsap.to(dynamicBg, {
-  scrollTrigger: {
-    trigger: '#about .about-wrapper',
-    start: 'top top',
-    endTrigger: '#about',
-    end: 'bottom bottom',
-    pin: true,
-    pinSpacing: true
-  }
-});
+function aboutMeScrollTrigger() {
+  gsap.to(dynamicBg, {
+    scrollTrigger: {
+      trigger: '#about .about-wrapper',
+      start: 'top top',
+      endTrigger: '#about',
+      end: 'bottom bottom',
+      pin: true,
+      pinSpacing: true
+    }
+  });
 
-ScrollTrigger.create({
-  trigger: '#about .about-wrapper',
-  start: 'bottom bottom',
-  endTrigger: '#about',
-  end: () => `bottom+=${sectionTitleContainer.getBoundingClientRect().height} bottom`,
-  onUpdate: self => {
-    const bgProgress = self.progress * 100;
-    dynamicBg.style.backgroundImage = `linear-gradient(to top, white ${bgProgress}%, transparent ${bgProgress}%)`;
-  }
-});
+  ScrollTrigger.create({
+    trigger: '#about .about-wrapper',
+    start: 'bottom bottom',
+    endTrigger: '#about',
+    end: () => `bottom+=${sectionTitleContainer.getBoundingClientRect().height} bottom`,
+    onUpdate: self => {
+      const bgProgress = self.progress * 100;
+      dynamicBg.style.backgroundImage = `linear-gradient(to top, white ${bgProgress}%, transparent ${bgProgress}%)`;
+    }
+  });
+}
 
 // *** COOPERATIONS section ***
-document.addEventListener('DOMContentLoaded', () => {
+let scrollAmount;
+const artistContainer = document.querySelector('.artists-container');
+
+function cooperationsScrollTrigger() {
+  scrollAmount = artistContainer.scrollWidth - window.innerWidth;
+
   ScrollTrigger.create({
     trigger: '#cooperations',
     start: 'bottom bottom',
-    end: () => {
-      const artistContainer = document.querySelector('.artists-container');
-      return `+=${artistContainer.scrollWidth - window.innerWidth}`;
-    },
+    end: `+=${scrollAmount}`,
     pin: true,
     pinSpacing: true,
     scrub: true,
     onUpdate: self => {
-      const artistContainer = document.querySelector('.artists-container');
-      const translateX = -self.progress * (artistContainer.scrollWidth - window.innerWidth);
+      const translateX = -self.progress * scrollAmount;
       artistContainer.style.transform = `translateX(${translateX}px)`;
     }
   });
-});
+}
 
 // *** FROM NOWHERE section ***
 const bigText = document.querySelector('#from-nowhere .big-text');
 const actionPillars = document.querySelectorAll('.action-pillars');
 const smallText = document.querySelector('#from-nowhere .small-text');
 const lines = document.querySelectorAll('.line');
-
-function getStartOffsets() {
-  return ['17vw', '28vw', '40vw', '57vw'];
-}
-
-function getEndOffsets() {
-  return ['top+=8% center', 'top+=31% center', 'top+=50% center', 'top+=70% center'];
-}
-
-function createActionPillarsTrigger() {
-  const offsets = getStartOffsets();
-  const endOffsets = getEndOffsets();
-
-  ScrollTrigger.getAll().forEach(t => t.trigger === bigText && t.kill());
-
-  actionPillars.forEach((item, i) => {
-    gsap.set(item, { x: offsets[i] });
-
-    gsap.to(item, {
-      x: 0,
-      ease: 'sine.out',
-      scrollTrigger: {
-        trigger: bigText,
-        start: 'top bottom',
-        end: endOffsets[i],
-        scrub: true
-      }
-    });
-  });
-}
 
 const initializeSmallText = () => {
   lines.forEach((line, index) => {
@@ -199,21 +167,50 @@ function createClipPathEffect() {
   });
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+function getStartOffsets() {
+  return ['17vw', '28vw', '40vw', '57vw'];
+}
+
+function getEndOffsets() {
+  return ['top+=8% center', 'top+=31% center', 'top+=50% center', 'top+=70% center'];
+}
+
+let actionPillarTriggers = [];
+
+function createActionPillarsTrigger() {
+  actionPillarTriggers.forEach(t => t.kill());
+  actionPillarTriggers = [];
+
+  const offsets = getStartOffsets();
+  const endOffsets = getEndOffsets();
+
+  actionPillars.forEach((item, i) => {
+    gsap.set(item, { x: offsets[i] });
+
+    const anim = gsap.to(item, {
+      x: 0,
+      ease: 'sine.out',
+      scrollTrigger: {
+        trigger: bigText,
+        start: 'top bottom',
+        end: endOffsets[i],
+        scrub: true
+      }
+    });
+    actionPillarTriggers.push(anim.scrollTrigger);
+  });
+}
+
+function fromNowhereScrollTrigger() {
   initializeSmallText();
   createClipPathEffect();
   createActionPillarsTrigger();
-});
-  
-window.addEventListener('resize', () => {
-  createActionPillarsTrigger();
-  createClipPathEffect();
-});
+}
 
 // *** AS-PLAYER section ***
 const asPlayerSection = document.getElementById('as-player');
 
-document.addEventListener('DOMContentLoaded', () => {
+function asPlayerScrollTrigger() {
   ScrollTrigger.create({
     trigger: asPlayerSection,
     start: 'top top',
@@ -227,4 +224,21 @@ document.addEventListener('DOMContentLoaded', () => {
       document.dispatchEvent(event);
     }
   });
+}
+
+
+// DOM Content Loaded
+document.addEventListener('DOMContentLoaded', () => {
+  setupScrollTrigger();
+  aboutMeScrollTrigger();
+  cooperationsScrollTrigger();
+  fromNowhereScrollTrigger();
+  asPlayerScrollTrigger();
+});
+
+// Unified resize handler
+window.addEventListener('resize', () => {
+  scrollAmount = artistContainer.scrollWidth - window.innerWidth;
+  createActionPillarsTrigger();
+  ScrollTrigger.refresh();
 });

@@ -43,7 +43,7 @@
 @media screen and (max-width: 800px) and (hover: hover) and (pointer: fine) {
   .text-wrapper {
     grid-template-columns: auto;
-    gap: 10svh;
+    gap: 7rem;
   }
 
   .line {
@@ -98,6 +98,6 @@
 @media screen and (max-width: 440px) and (hover: none) and (pointer: coarse) {
   .text-wrapper {
     grid-template-columns: auto;
-    gap: 10svh;
+    gap: 7rem;
   }
 }
