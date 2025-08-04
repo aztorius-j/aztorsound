@@ -15,10 +15,10 @@
 
 .category-wrapper {
   position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0%;
-  left: 0%;
+  width: 100vw;
+  height: 100svh;
+  top: -2%;
+  left: -2%;
   transform: translateY(0);
   transition: transform 500ms cubic-bezier(.602, .001, .175, 1);
 }
