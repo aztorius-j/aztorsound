@@ -16,23 +16,11 @@ document.addEventListener('who-needs-me-progress', event => {
 });
 
 // BREAKPOINTS
-const breakPoints = [
-  1.0,
-  10.1,
-  19.2,
-  28.3,
-  37.4,
-  46.5,
-  55.6,
-  64.7,
-  73.8,
-  82.9,
-  92.0
-];
+const breakPoints = [1, 10, 19, 28, 37, 46, 55, 64, 73, 82, 91];
 
 // UPDATE LINES PADDING
 function updateLinesPadding() {
-  if (window.innerWidth <= 624 && window.innerHeight >= 624) {
+  if (window.innerWidth <= 624) {
     secondLine.style.paddingLeft = '0px';
     thirdLine.style.paddingLeft = '0px';
     return;
@@ -58,11 +46,6 @@ function handleResizeAndPositioning() {
   clientAppear();
 }
 
-// EVENT LISTENERS
-window.addEventListener('DOMContentLoaded', handleResizeAndPositioning);
-window.addEventListener('resize', handleResizeAndPositioning);
-window.addEventListener('orientationchange', handleResizeAndPositioning);
-
 clients.forEach(client => {
   client.style.transform = `translateX(${window.innerWidth}px)`;
 });
@@ -80,4 +63,8 @@ const clientAppear = () => {
   });
 }
 
+// EVENT LISTENERS
+window.addEventListener('DOMContentLoaded', handleResizeAndPositioning);
+window.addEventListener('resize', handleResizeAndPositioning);
+window.addEventListener('orientationchange', handleResizeAndPositioning);
 window.addEventListener('scroll', clientAppear);
