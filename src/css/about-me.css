@@ -14,10 +14,6 @@
   padding: 0 0 0 38vw;
 }
 
-#about .max-width-container {
-  height: 100%;
-}
-
 #about .fluid-container {
   height: 100%;
   display: grid;

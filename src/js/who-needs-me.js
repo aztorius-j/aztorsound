@@ -1,83 +1,83 @@
-const   whoNeedsMeSection = document.getElementById('who-needs-me'),
-        customersWrapper = document.querySelector('.customers-wrapper'),
-        customerLines = Array.from(document.querySelectorAll('.customers-line')),
-        customers = Array.from(document.querySelectorAll('.customer')),
-        secondLine = customerLines[1],
-        thirdLine = customerLines[2],
-        fourthLine = customerLines[3];
+const clientsWrapper = document.querySelector('.clients-wrapper'),
+      clientLines = Array.from(document.querySelectorAll('.clients-line')),
+      clients = Array.from(document.querySelectorAll('.client')),
+      secondLine = clientLines[1],
+      thirdLine = clientLines[2],
+      fourthLine = clientLines[3];
 
-let     secondPadding = 0,
-        thirdPadding = 0,
-        needsMeStart,
-        needsMeTotal;
+let   secondPadding = 0,
+      thirdPadding = 0;
 
-const   bearkPoints = [
-    1.0,
-    10.1,
-    19.2,
-    28.3,
-    37.4,
-    46.5,
-    55.6,
-    64.7,
-    73.8,
-    82.9,
-    92.0
-];
+// SCROLL PROGRESS FROM LENIS-GSAP
+let whoNeedsMeScrollProgress = 0;
 
-function updateScrollMetrics() {
-    needsMeStart = whoNeedsMeSection.offsetTop;
-    needsMeTotal = whoNeedsMeSection.getBoundingClientRect().height - window.innerHeight;
-}
-
-function updateLinesPadding() {
-    if (window.innerWidth < 600 && window.innerHeight > 600) {
-        secondLine.style.paddingLeft = '0px';
-        thirdLine.style.paddingLeft = '0px';
-        return;
-    }
-
-    const fourthLineChildren = Array.from(fourthLine.children);
-    const totalChildrenWidth = fourthLineChildren.reduce((sum, el) => sum + el.getBoundingClientRect().width, 0);
-    const totalPadding = customersWrapper.getBoundingClientRect().width - totalChildrenWidth - 32;
-
-    secondPadding = totalPadding / 3;
-    thirdPadding = totalPadding / 3 * 2;
-
-    secondLine.style.paddingLeft = `${secondPadding}px`;
-    thirdLine.style.paddingLeft = `${thirdPadding}px`;
-}
-
-function handleResizeAndPositioning() {
-    updateScrollMetrics();
-    updateLinesPadding();
-    customers.forEach(customer => {
-        customer.style.transform = `translateX(${window.innerWidth}px)`;
-    });
-    customerAppear();
-}
-
-window.addEventListener("DOMContentLoaded", handleResizeAndPositioning);
-window.addEventListener("resize", handleResizeAndPositioning);
-window.addEventListener("orientationchange", handleResizeAndPositioning);
-
-customers.forEach(customer => {
-    customer.style.transform = `translateX(${window.innerWidth}px)`;
+document.addEventListener('who-needs-me-progress', event => {
+  whoNeedsMeScrollProgress = event.detail.progress;
 });
 
-const customerAppear = () => {
-    const currentTranslate = Math.max(0, window.scrollY - needsMeStart);
-    const translatePerc = Math.min(100, (currentTranslate * 100) / needsMeTotal);
-    
-    bearkPoints.forEach((breakPoint, index) => {
-        if (translatePerc >= breakPoint && customers[index]) {
-            customers[index].style.transform = 'translateX(0)';
-            customers[index].style.opacity = '1';
-        } else if (translatePerc < breakPoint && customers[index]) {
-            customers[index].style.transform = `translateX(${window.innerWidth}px)`;
-            customers[index].style.opacity = '0';
-        }
-    });
+// BREAKPOINTS
+const breakPoints = [
+  1.0,
+  10.1,
+  19.2,
+  28.3,
+  37.4,
+  46.5,
+  55.6,
+  64.7,
+  73.8,
+  82.9,
+  92.0
+];
+
+// UPDATE LINES PADDING
+function updateLinesPadding() {
+  if (window.innerWidth <= 624 && window.innerHeight >= 624) {
+    secondLine.style.paddingLeft = '0px';
+    thirdLine.style.paddingLeft = '0px';
+    return;
+  }
+
+  const fourthLineChildren = Array.from(fourthLine.children);
+  const totalChildrenWidth = fourthLineChildren.reduce((sum, el) => sum + el.getBoundingClientRect().width, 0);
+  const totalPadding = clientsWrapper.getBoundingClientRect().width - totalChildrenWidth - 32;
+
+  secondPadding = totalPadding / 3;
+  thirdPadding = totalPadding / 3 * 2;
+
+  secondLine.style.paddingLeft = `${secondPadding}px`;
+  thirdLine.style.paddingLeft = `${thirdPadding}px`;
 }
 
-window.addEventListener('scroll', customerAppear);
+// HANDLE RESIZE AND POSITIONING
+function handleResizeAndPositioning() {
+  updateLinesPadding();
+  clients.forEach(client => {
+    client.style.transform = `translateX(${window.innerWidth}px)`;
+  });
+  clientAppear();
+}
+
+// EVENT LISTENERS
+window.addEventListener('DOMContentLoaded', handleResizeAndPositioning);
+window.addEventListener('resize', handleResizeAndPositioning);
+window.addEventListener('orientationchange', handleResizeAndPositioning);
+
+clients.forEach(client => {
+  client.style.transform = `translateX(${window.innerWidth}px)`;
+});
+
+// CLIENT APPEAR
+const clientAppear = () => {
+  breakPoints.forEach((breakPoint, index) => {
+    if (whoNeedsMeScrollProgress >= breakPoint && clients[index]) {
+      clients[index].style.transform = 'translateX(0)';
+      clients[index].style.opacity = '1';
+    } else if (whoNeedsMeScrollProgress < breakPoint && clients[index]) {
+      clients[index].style.transform = `translateX(${window.innerWidth}px)`;
+      clients[index].style.opacity = '0';
+    }
+  });
+}
+
+window.addEventListener('scroll', clientAppear);

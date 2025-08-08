@@ -128,14 +128,14 @@ function createClipPathEffect() {
   clipPathAnims = [];
 
   ScrollTrigger.create({
-    trigger: lines[7],
+    trigger: isMobile ? lines[7] : lines[4],
     start: 'bottom bottom',
     onEnter: () => {
       lines.forEach((line, index) => {
         const anim = gsap.to(line, {
           clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
           transform: 'translateY(0)',
-          duration: 1 + index * 0.075,
+          duration: 0.4 + index * 0.08,
           ease: 'power2.inOut',
           willChange: 'clip-path',
           onComplete: () => {
@@ -226,6 +226,26 @@ function asPlayerScrollTrigger() {
   });
 }
 
+// *** WHO NEEDS ME section ***
+const whoNeedsMeSection = document.getElementById('who-needs-me');
+const whoNeedsMeWrapper = document.querySelector('.who-needs-me-wrapper');
+
+function whoNeedsMeScrollTrigger() {
+  ScrollTrigger.create({
+    trigger: whoNeedsMeWrapper,
+    start: 'bottom bottom',
+    endTrigger: whoNeedsMeSection,
+    end: 'bottom bottom',
+    pin: true,
+    pinSpacing: false,
+    onUpdate: self => {
+      const event = new CustomEvent('who-needs-me-progress', {
+        detail: {progress: self.progress * 100}
+      });
+      document.dispatchEvent(event);
+    }
+  });
+}
 
 // DOM Content Loaded
 document.addEventListener('DOMContentLoaded', () => {
@@ -234,6 +254,7 @@ document.addEventListener('DOMContentLoaded', () => {
   cooperationsScrollTrigger();
   fromNowhereScrollTrigger();
   asPlayerScrollTrigger();
+  whoNeedsMeScrollTrigger()
 });
 
 // Unified resize handler

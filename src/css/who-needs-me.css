@@ -1,137 +1,124 @@
 #who-needs-me {
-    height: 600vh;
+  height: 600svh;
 }
 
-#who-needs-me .sticky-element {
-    height: 100vh;
-    display: grid;
-    grid-template-rows: 3fr 2fr 7fr;
-    padding: 1rem;
+.who-needs-me-wrapper {
+  height: 100svh;
+  display: grid;
+  grid-template-rows: 3fr 2fr 7fr;
+  padding: 1rem 0;
 }
 
 #who-needs-me .section-title-container {
-    justify-content: flex-start;
-    align-items: center;
-    padding-left: 44%;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 44%;
 }
 
 .short-paragraph {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1rem;
 }
 
 .short-paragraph p {
-    font-size: 2rem;
-    text-align: center;
+  font-size: 2rem;
+  text-align: center;
 }
 
 .short-paragraph b {
-    font-family: 'NeueHaasDisplayBold';
+  font-family: 'NeueHaasDisplayBold';
 }
 
-.customers-wrapper {
-    display: flex;
-    flex-direction: column;
+.clients-padding-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 0 1rem;
+}
+
+.clients-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: min(4.5vw, 2rem);
+  max-width: 860px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.clients-line {
+  display: flex;
+  justify-content: flex-start;
+  gap: 1rem;
+}
+
+.clients-line:nth-of-type(4) { justify-content: flex-end; }
+
+.client {
+  font-size: 1.5rem;
+  border: 1px solid var(--white-color);
+  border-radius: 0.7em;
+  padding: 0.475em 0.675em;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(0px);
+  transition: transform 400ms ease-in-out, opacity 600ms ease-in-out;
+}
+
+/* MAX WIDTH MEDIA QUERIES */
+@media screen and (max-width: 624px) {
+  .who-needs-me-wrapper {
+    grid-template-rows: repeat(3, auto);
+  }
+
+  #who-needs-me .section-title-container {
+    padding-left: 28%;
+  }
+
+  .short-paragraph p {
+    font-size: clamp(1rem, 5.25vw, 2rem);
+  }
+
+  .clients-line {
     justify-content: center;
+    padding-left: 0;
     flex-wrap: wrap;
-    gap: 2rem;
-    max-width: 860px;
-    margin: 0 auto;
-    width: 100%;
+    gap: 4.5vw;
+  }
+
+  .clients-line:nth-of-type(4) { justify-content: center; }
+
+  .client {
+    font-size: clamp(1rem, 4vw, 1.5rem);
+  }
 }
 
-.customers-line {
-    display: flex;
+
+
+
+
+
+/* MAX HEIGHT MEDIA QUERIES */
+/* @media screen and (max-height: 624px) {
+  .who-needs-me-wrapper {
+    display: grid;
+    height: 150svh;
+    grid-template-rows: 50svh 20svh 80svh;
+    align-items: center;
+  }
+
+  .clients-line {
     justify-content: flex-start;
+    flex-wrap: nowrap;
     gap: 1rem;
-}
+  }
 
-.customers-line:nth-of-type(4) { justify-content: flex-end; }
-
-.customer {
-    font-size: 1.5rem;
-    border: 1px solid var(--white-color);
-    border-radius: 1rem;
-    padding: 0.7rem 1rem;
-    white-space: nowrap;
-    opacity: 0;
-    transform: translateX(0px);
-    transition: transform 400ms ease-in-out, opacity 600ms ease-in-out;
-}
-
-@media screen and (max-width: 600px) {
-    #who-needs-me .sticky-element {
-        display: flex;
-        flex-direction: column;
-    }
-
-    #who-needs-me .section-title-container {
-        height: 9rem;
-        padding-left: 28%;
-    }
-
-    .customers-wrapper {
-        gap: 4.5vw;
-    }
-
-    .short-paragraph {
-        max-height: 7rem;
-    }
-
-    .short-paragraph p {
-        font-size: clamp(1rem, 5.25vw, 2rem);
-        padding: 5% 0 10% 0;
-    }
-
-    .customers-line {
-        justify-content: center;
-        padding-left: 0;
-        flex-wrap: wrap;
-        gap: 4.5vw;
-    }
-
-    .customers-line:nth-of-type(4) { justify-content: center; }
-
-    .customer {
-        font-size: clamp(1rem, 4vw, 1.5rem);
-        padding: 0.5em 0.75em;
-        border-radius: 0.75em;
-    }
-}
-
-@media screen and (max-width: 440px) {
-    #who-needs-me .section-title-container {
-        padding: 2rem 0;
-    }  
-}
-
-@media screen and (max-height: 600px) and (orientation: landscape) {
-    #who-needs-me .sticky-element {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .customers-wrapper {
-        padding: 2rem 0;
-        gap: 1rem;
-    }
-
-    .short-paragraph {
-        display: none;
-    }
-
-    .customers-line {
-        justify-content: flex-start;
-        flex-wrap: nowrap;
-        gap: 1rem;
-    }
-
-    .customers-line:nth-of-type(4) { justify-content: flex-end; }
-
-    .customer {
-        font-size: clamp(1rem, 4.5vh, 1.5rem);
-        padding: 0.5em 0.75em;
-        border-radius: 0.75em;
-    }
-}
+  .client {
+    font-size: clamp(1rem, 4.5vh, 1.5rem);
+    padding: 0.5em 0.75em;
+    border-radius: 0.75em;
+  }
+} */

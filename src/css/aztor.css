@@ -1,10 +1,10 @@
 #aztor {
-    height: 250vh;
+    height: 250svh;
     position: relative;
 }
 
 #aztor .sticky-element {
-    height: 100vh;
+    height: 100svh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,7 +17,7 @@
     top: 0;
     left: 0;
     width: 100vw;
-    height: 100vh;
+    height: 100svh;
     pointer-events: none;
     background: radial-gradient(circle 200px at center, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 1) 100%);
     z-index: 10;
