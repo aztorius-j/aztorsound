@@ -247,6 +247,27 @@ function whoNeedsMeScrollTrigger() {
   });
 }
 
+// *** AZTOR section ***
+const aztorSection = document.getElementById('aztor');
+const aztorWrapper = document.querySelector('.aztor-wrapper');
+
+function aztorScrollTrigger() {
+  ScrollTrigger.create({
+    trigger: aztorWrapper,
+    start: 'bottom bottom',
+    endTrigger: aztorSection,
+    end: 'bottom bottom',
+    pin: true,
+    pinSpacing: false,
+    onUpdate: self => {
+      const event = new CustomEvent('aztor-progress', {
+        detail: {progress: self.progress}
+      });
+      document.dispatchEvent(event);
+    }
+  });
+}
+
 // DOM Content Loaded
 document.addEventListener('DOMContentLoaded', () => {
   setupScrollTrigger();
@@ -255,6 +276,7 @@ document.addEventListener('DOMContentLoaded', () => {
   fromNowhereScrollTrigger();
   asPlayerScrollTrigger();
   whoNeedsMeScrollTrigger()
+  aztorScrollTrigger();
 });
 
 // Unified resize handler

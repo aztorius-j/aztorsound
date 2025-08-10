@@ -73,7 +73,7 @@
   }
 
   .about-big {
-    font-size: clamp(1rem, 4.6svh, 3rem);
+    font-size: clamp(1.5rem, 4svh, 3rem);
   }
 
   .about-small {
