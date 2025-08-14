@@ -12,7 +12,7 @@ class SectionTitle extends HTMLElement {
         #title-border {
           display: grid;
           grid-template-columns: 4.2rem auto;
-          width: 20rem;
+          max-width: 20rem;
           height: 6rem;
           white-space: nowrap;
         }

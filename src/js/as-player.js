@@ -1,5 +1,6 @@
 // VARIABLES, CONSTANTS
 const video = document.getElementById('video'),
+      player = document.querySelector('.player'),
       headingOne = document.querySelector('.heading-one'),
       headingTwo = document.querySelector('.heading-two'),
       title = document.querySelector('h2'),
@@ -16,8 +17,7 @@ const video = document.getElementById('video'),
       pauseIcon = document.querySelector('.pause-icon'),
       categoryWrapper = document.querySelector('.category-wrapper');
 
-let   firstMovie, secondMovie, thirdMovie,
-      activeIndex = 0,
+let   activeIndex = 0,
       previousCategoryIndex = -1,
       sliderTimeout,
       videoData = [];
@@ -30,8 +30,15 @@ async function fetchMovies() {
     const response = await fetch('/portfolio.json');
     const data = await response.json();
     videoData = data;
+    visualInitialize(true);
+    manualChange(true);
+    return true;
   } catch (error) {
-    console.error('Error loading JSON:', error);
+    visualInitialize(false);
+    manualChange(false);
+    player.style.backdropFilter = 'none';
+    player.style.webkitBackdropFilter = 'none';
+    return false;
   }
 }
 
@@ -83,8 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // CHANGE CATEGORY
 async function changeCategory(newCategoryIndex) {
   if (newCategoryIndex === previousCategoryIndex) return;
-
-  await videoDataPromise;
+  const success = await videoDataPromise;
 
   let newY = -newCategoryIndex * categoryWrapper.getBoundingClientRect().height;
   categoryWrapper.style.transform = `translateY(${newY}px)`;
@@ -93,12 +99,9 @@ async function changeCategory(newCategoryIndex) {
   video.pause();
   activeIndex = 0;
 
-  firstMovie = videoData[previousCategoryIndex].videos[0];
-  secondMovie = videoData[previousCategoryIndex].videos[1];
-  thirdMovie = videoData[previousCategoryIndex].videos[2];
-
-  headingOne.innerText = videoData[previousCategoryIndex].category.split(" ")[0];
-  headingTwo.innerText = videoData[previousCategoryIndex].category.split(" ")[1] || "";
+  if (!success) return;
+  headingOne.textContent = videoData[previousCategoryIndex].category.split(" ")[0];
+  headingTwo.textContent = videoData[previousCategoryIndex].category.split(" ")[1] || "";
 
   changeContent(previousCategoryIndex);
   startSlider();
@@ -106,7 +109,7 @@ async function changeCategory(newCategoryIndex) {
 
 // CHANGE CONTENT
 function changeContent(previousCategoryIndex) {
-  const movies = [firstMovie, secondMovie, thirdMovie];
+  const movies = videoData[previousCategoryIndex].videos;
 
   posters.forEach((poster, index) => {
     const categoryStartIndex = previousCategoryIndex * 3;
@@ -161,16 +164,31 @@ const adjustCategoryPosition = debounce(() => {
 window.addEventListener("resize", adjustCategoryPosition);
 
 // VISUAL INITIALIZE
-async function visualInitialize() {
-  await videoDataPromise;
-  const allVideos = videoData.flatMap(category => category.videos);
+function visualInitialize(success) {
+  if (!success) {
+    posters.forEach((poster, index) => {
+      let errorImage;
+      if (index < 3) {
+        errorImage = "/img/error1.webp";
+      } else if (index < 6) {
+        errorImage = "/img/error2.webp";
+      } else {
+        errorImage = "/img/error3.webp";
+      }
+      poster.style.background = `url('${errorImage}') 50% 50% / cover no-repeat`;
+      poster.style.opacity = 1;
+    });
+    return;
+  }
+  const allVideos = videoData.flatMap(category => category.videos || []);
   posters.forEach((poster, index) => {
-    poster.style.background = `url(${allVideos[index].poster}) 50% 50% / cover no-repeat`;
+    poster.style.background = 'url(' + allVideos[index].poster + ') 50% 50% / cover no-repeat';
   });
 }
 
 // MANUAL CHANGE
-function manualChange() {
+function manualChange(success) {
+  if (!success) return;
   sliderButtons.forEach((slide, index) => {
     slide.addEventListener('click', () => {
       if (index !== activeIndex) {               
@@ -192,8 +210,9 @@ function manualChange() {
   });
 }
 
-// PLAY
+// PLAYER BUTTONS
 playButton.addEventListener('click', () => {
+  if (!video.src) return;
   if (video.paused) {
     video.play();
     playing();
@@ -218,7 +237,6 @@ video.addEventListener('ended', () => {
   startSlider();
 });
 
-// MUTE
 muteButton.addEventListener('click', () => {
   video.muted = !video.muted;
   
@@ -229,7 +247,6 @@ muteButton.addEventListener('click', () => {
   }
 });
 
-// PLAYER ICONS CHANGE
 function playing() {
   playIcon.style.display = 'none';
   pauseIcon.style.display = 'inline';
@@ -254,8 +271,5 @@ function soundOn() {
   volumeOff.style.display = 'none';
 }
 
-// FUNCTION CALLS
-visualInitialize();
-manualChange();
 paused();
 soundOn();

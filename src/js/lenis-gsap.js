@@ -65,8 +65,8 @@ const dynamicBg = document.querySelector('.dynamic-bg'),
 function aboutMeScrollTrigger() {
   gsap.to(dynamicBg, {
     scrollTrigger: {
-      trigger: '#about .about-wrapper',
-      start: 'top top',
+      trigger: '.about-wrapper',
+      start: 'bottom bottom',
       endTrigger: '#about',
       end: 'bottom bottom',
       pin: true,
