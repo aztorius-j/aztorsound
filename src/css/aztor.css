@@ -58,10 +58,7 @@ footer {
   padding: 1rem;
   position: absolute;
   bottom: 0;
-  left: 50%;
   width: 100%;
-  max-width: 2000px;
-  transform: translateX(-50%);
 }
 
 footer > :nth-child(2) {
@@ -116,6 +113,13 @@ footer > :nth-child(3) {
   display: none;
 }
 
+/* MAX WIDTH MEDIA QUERIES */
+@media screen and (max-width: 800px) {
+  .aztor-wrapper {
+    background: url('/img/aztorsound-bg.webp') no-repeat 75% 50% / cover;
+  }
+}
+
 @media screen and (max-width: 540px) {
   footer {
     grid-template-columns: 1fr;
@@ -131,5 +135,12 @@ footer > :nth-child(3) {
 @media (hover: none) and (pointer: coarse) {
   .aztor-wrapper {
     background-attachment: initial;
+  }
+}
+
+/* MAX HEIGHT MEDIA QUERIES */
+@media screen and (max-height: 360px) and (hover: hover) and (pointer: fine) {
+  footer {
+    visibility: hidden;
   }
 }

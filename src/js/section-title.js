@@ -4,8 +4,8 @@ class SectionTitle extends HTMLElement {
     this.attachShadow({ mode: "open" });
 
     // Načítanie hodnôt z atribútov
-    const title = this.getAttribute("title") || "Default Title";
-    const number = this.getAttribute("subtitle") || "__000";
+    const title = this.getAttribute("title");
+    const number = this.getAttribute("subtitle");
 
     this.shadowRoot.innerHTML = `
       <style>
@@ -19,7 +19,7 @@ class SectionTitle extends HTMLElement {
 
         #title-border svg {
           width: 1.75rem;
-          stroke: var(--white-color, white);
+          stroke: var(--white-color);
         }
 
         .arrow {
@@ -48,7 +48,7 @@ class SectionTitle extends HTMLElement {
         }
 
         h2 {
-          color: var(--ivgi-red, red);
+          color: var(--ivgi-red);
         }
       </style>
 
