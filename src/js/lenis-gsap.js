@@ -20,9 +20,9 @@ const isMobile = window.innerWidth < 768;
 const lenis = new Lenis({
   smooth: true,
   syncTouch: true,
-  duration: isMobile ? 1.2 : 1.8,
+  duration: isMobile ? 1 : 1.4,
   smoothWheel: true,
-  wheelMultiplier: 0.5,
+  wheelMultiplier: 0.8,
 });
 
 // Use requestAnimationFrame to continuously update the scroll
